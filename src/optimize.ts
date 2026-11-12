@@ -1,7 +1,7 @@
 // optimize_purchase v0: for one purchase, rank the cards someone holds by what they earn plus any credit that applies,
 // with the conditions an agent must know before paying. Pure: data in, answer out.
-import { PERIODS, type CardFile, type Category, type Entitlement } from "./entitlements.ts";
-import { creditStatus, type State } from "./expiring.ts";
+import { PERIODS, type CardFile, type Category, type Entitlement, type TaxRule, type TaxRules } from "./entitlements.ts";
+import { asEntitlement, benefitStatus, creditStatus, tracksUse, type Benefit, type State } from "./expiring.ts";
 
 /** An earn figure from outside Tap (CardSavvy), used in place of Tap's own rate for that card. */
 export type Earn = { usd: number; note: string; warnings: string[] };
@@ -28,7 +28,37 @@ export type Option = {
   total_usd: number;
   warnings: string[];
 };
-export type Answer = { best: Option | null; options: Option[]; tips: string[]; assumptions: string[] };
+/** A non-card benefit that covers this purchase. It sits beside the card pick: most stack with it, pay_with replaces it. */
+export type BenefitHit = {
+  id: string;
+  source: string;
+  name: string;
+  how: Benefit["how"];
+  up_to_usd: number | null;
+  note: string;
+  /** Where the terms come from, and how far to trust them. */ checked: string;
+  /** For a pre-tax account: what the IRS rules say about this kind of purchase. */
+  eligibility?: { status: TaxRule["status"]; note: string; source_url: string };
+};
+export type Answer = { best: Option | null; options: Option[]; benefits: BenefitHit[]; tips: string[]; assumptions: string[] };
+
+const HOW: Record<Benefit["how"], string> = {
+  pay_with: "pay from this account instead of a card",
+  reimburse: "pay with the best card, then claim it back",
+  discount: "apply it at checkout; it stacks with the card",
+  allowance: "counts against this allowance",
+  reward: "earned automatically; it stacks with the card",
+};
+
+function checkedBy(b: Benefit): string {
+  const e = b.evidence;
+  if (!e && b.account) return "what it can pay for is checked against the IRS rules (see eligibility); that the user has the account is as they said";
+  if (!e) return "as the user described it; not checked against a document";
+  if (e.by === "tap") return `Tap checked ${e.source} on ${e.checked_at}${e.needs_verify ? "; some terms aren't confirmed yet" : ""}`;
+  // A quote that doesn't contain the saved amount is the cheapest sign the agent misread the document.
+  const shows = b.value === undefined || e.quote.includes(String(b.value));
+  return `from ${e.source}: "${e.quote}"${shows ? "" : ` (the quote doesn't show the ${b.value} amount: confirm it with the user)`}`;
+}
 
 // shortcut: categories a general "travel" credit covers, approximated; upgrade when a card's travel definition is stored as data.
 const TRAVEL: Category[] = ["airfare", "airline_fees", "hotel", "vacation_rental", "vacation_packages", "travel", "rideshare", "local_transit", "tolls"];
@@ -56,7 +86,7 @@ export function optimizePurchase(
   p: Purchase,
   cards: CardFile[],
   held: string[],
-  extra: { centsPerPoint?: number; state?: State; earn?: Record<string, Earn> } = {},
+  extra: { centsPerPoint?: number; state?: State; earn?: Record<string, Earn>; taxRules?: TaxRules } = {},
 ): Answer {
   const centsPerPoint = extra.centsPerPoint ?? 1;
   // A given ISO date is read as written (new Date("2026-10-01") is UTC midnight, which is still September in Denver).
@@ -137,14 +167,51 @@ export function optimizePurchase(
   });
 
   options.sort((a, b) => b.total_usd - a.total_usd);
+
+  const benefits: BenefitHit[] = [];
+  let unchecked = false; // a benefit with neither a document nor IRS rules behind it
+  for (const b of extra.state?.benefits ?? []) {
+    if (b.except?.includes(p.category)) continue;
+    // A pre-tax account is checked against the IRS rules first: they decide, whatever the user said it covers.
+    const rule = b.account && extra.taxRules?.rules[extra.taxRules.accounts[b.account]]?.find((r) => r.category === p.category);
+    const listed = !!(b.categories?.length || b.merchants?.length) && applies(asEntitlement(b), p);
+    if (!rule && !listed) continue;
+    if (rule && rule.status === "not_eligible") {
+      tips.push(`${b.name} (${b.source}) can't pay for this: ${rule.note}`);
+      continue;
+    }
+    const told = benefitStatus(b, today);
+    if (told.status === "used") {
+      tips.push(`"${b.name}" (${b.source}) was already used this period (${told.on}).`);
+      continue;
+    }
+    const usd = b.value === undefined ? null : b.unit === "pct" ? (p.amount * b.value) / 100 : Math.min(p.amount, b.value);
+    const note = [
+      HOW[b.how],
+      b.instructions ?? "",
+      tracksUse(b) ? (told.status === "unused" ? `you said it was unused on ${told.on}` : "not confirmed unused this period: ask the user") : "",
+    ].filter(Boolean).join("; ");
+    if (!b.evidence && !b.account) unchecked = true;
+    benefits.push({
+      id: b.id, source: b.source, name: b.name, how: b.how, up_to_usd: usd === null ? null : round(usd), note, checked: checkedBy(b),
+      ...(rule && { eligibility: { status: rule.status, note: rule.note, source_url: rule.source_url } }),
+    });
+  }
+  if (benefits.some((b) => b.how === "pay_with"))
+    tips.unshift("A benefit account (HSA, FSA, commuter) can pay for this with pre-tax money, which usually beats card rewards. If it's eligible and the user pays from it, the card ranking doesn't apply.");
   if (staged) tips.unshift("Pay with the card itself (or a pass-through token) where you can: a wallet's one-time card can lose merchant credits and category bonuses.");
   return {
     best: options[0] ?? null,
     options,
+    benefits,
     tips: [...new Set(tips)],
     assumptions: [
       extra.earn ? "Earn rates and point values from CardSavvy where it knows the card; Tap's own otherwise." : `Points and miles valued at ${centsPerPoint}¢ each.`,
       extra.state ? "Credits marked used in the status file are left out; partial use isn't tracked." : "Credit amounts assume the full period's credit is still unused.",
+      ...(unchecked
+        ? ["Some benefits are as the user described them, not checked against a document; ask for their benefits guide or plan summary."]
+        : []),
+      ...(benefits.some((b) => b.eligibility?.status === "depends") ? ["Pre-tax account eligibility depends on the item: check it against the eligibility note before paying from the account."] : []),
     ],
   };
 }

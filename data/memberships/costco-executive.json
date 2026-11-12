@@ -1,0 +1,24 @@
+{
+  "membership": "Costco Executive",
+  "slug": "costco-executive",
+  "provider": "Costco",
+  "annual_fee": 130,
+  "product_url": "https://www.costco.com/executive-rewards.html",
+  "checked_at": "2026-11-12",
+  "benefits": [
+    {
+      "id": "2pct-reward",
+      "name": "2% Executive reward",
+      "how": "reward",
+      "merchants": ["Costco", "Costco.com", "Costco Travel"],
+      "except": ["gas"],
+      "value": 2,
+      "unit": "pct",
+      "cadence": "ongoing",
+      "instructions": "Earned automatically on qualified purchases, up to $1,250 a year; paid as a reward in the renewal statement about three months before renewal. Not on gas, tobacco, Costco Shop Cards or stamps.",
+      "source_url": "https://www.costco.com/executive-rewards.html",
+      "source_excerpt": "Executive Members earn an annual 2% Reward, up to $1,250*, on qualified Costco, Costco.com and Costco Travel purchases. ... Rewards are not calculated: (i) on purchases of cigarettes or tobacco-related products, gasoline, Costco Shop Cards, postage stamps",
+      "confidence": "issuer"
+    }
+  ]
+}

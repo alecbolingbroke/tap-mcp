@@ -1,4 +1,5 @@
 // The entitlement database schema (data/entitlements/*.json): shared by the checker script and the dev-only /data browser.
+import type { Benefit } from "./expiring.ts";
 export const KINDS = ["credit", "multiplier", "companion", "free_night", "status", "insurance", "protection", "perk"] as const;
 export const UNITS = ["USD", "pct", "points_per_dollar", "miles_per_dollar", "count"] as const;
 // every_n_years needs `every_years`; window_after_trigger (e.g. 12 months from activation) needs `window_months`.
@@ -7,7 +8,7 @@ export const CADENCES = ["monthly", "quarterly", "semiannual", "calendar_year", 
 export const PERIODS: Partial<Record<(typeof CADENCES)[number], number>> = { monthly: 12, quarterly: 4, semiannual: 2 };
 // Purchase categories for earn rates and credits (what optimize_purchase matches on). "everything" = the card's base rate;
 // "rotating" = look up the card's `rotating` calendar for the quarter.
-export const CATEGORIES = ["dining", "food_delivery", "grocery", "gas", "ev_charging", "airfare", "airline_fees", "hotel", "vacation_rental", "vacation_packages", "travel", "rideshare", "local_transit", "tolls", "streaming", "digital_news", "cable", "utilities", "entertainment", "fitness", "membership", "apparel", "wearables", "trusted_traveler", "stadium_concessions", "inflight", "lounge", "cargo", "everything", "rotating"] as const;
+export const CATEGORIES = ["dining", "food_delivery", "grocery", "gas", "ev_charging", "airfare", "airline_fees", "hotel", "vacation_rental", "vacation_packages", "travel", "rideshare", "local_transit", "tolls", "streaming", "digital_news", "cable", "utilities", "entertainment", "fitness", "membership", "apparel", "wearables", "trusted_traveler", "stadium_concessions", "inflight", "lounge", "cargo", "pharmacy", "medical", "dental", "vision", "childcare", "education", "phone", "everything", "rotating"] as const;
 export type Category = (typeof CATEGORIES)[number];
 export const REQUIRES = ["activation", "enrollment", "registration", "minimum_spend", "pay_with_card", "book_via_channel", "selection"] as const;
 
@@ -47,5 +48,22 @@ export type CardFile = {
 /** Credits that come back at least once a year; multi-year and one-off credits would overstate a yearly figure. */
 export const isYearlyCredit = (e: Entitlement) =>
   e.kind === "credit" && e.unit === "USD" && !["one_time", "every_n_years", "window_after_trigger"].includes(e.cadence);
+
+/** data/memberships/*.json: a paid membership's money benefits, each quoted from the provider's own page. */
+export type MembershipFile = {
+  membership: string;
+  slug: string;
+  provider: string;
+  annual_fee: number;
+  product_url: string;
+  checked_at: string;
+  benefits: (Omit<Benefit, "source" | "used" | "checked" | "evidence"> & { source_url: string; source_excerpt: string; confidence: "issuer" | "needs_verify" })[];
+};
+
+/** Pre-tax accounts Tap knows the IRS rules for (data/tax-accounts.json). */
+export const ACCOUNTS = ["hsa", "health_fsa", "dependent_care_fsa"] as const;
+export type Account = (typeof ACCOUNTS)[number];
+export type TaxRule = { category: Category; status: "eligible" | "depends" | "not_eligible"; note: string; source_url: string; source_excerpt: string };
+export type TaxRules = { checked_at: string; accounts: Record<Account, string>; rules: Record<string, TaxRule[]> };
 
 export const yearlyCredits = (c: CardFile) => c.entitlements.filter(isYearlyCredit).reduce((s, e) => s + (e.value ?? 0), 0);

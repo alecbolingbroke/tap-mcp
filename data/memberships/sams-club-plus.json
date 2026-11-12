@@ -1,0 +1,23 @@
+{
+  "membership": "Sam's Club Plus",
+  "slug": "sams-club-plus",
+  "provider": "Sam's Club",
+  "annual_fee": 120,
+  "product_url": "https://www.samsclub.com/join",
+  "checked_at": "2026-11-12",
+  "benefits": [
+    {
+      "id": "sams-cash",
+      "name": "2% Sam's Cash",
+      "how": "reward",
+      "merchants": ["Sam's Club"],
+      "value": 2,
+      "unit": "pct",
+      "cadence": "ongoing",
+      "instructions": "Earned automatically on in-club purchases, including Scan & Go and Curbside Pickup; not on shipped or delivered online orders. Yearly cap: $500 on Sam's Club's pages, reported as $750 since May 2026.",
+      "source_url": "https://www.samsclub.com/SamsCash",
+      "source_excerpt": "Plus members earn 2% Sam's Cash on their in-club purchases, up to $500 a year",
+      "confidence": "needs_verify"
+    }
+  ]
+}

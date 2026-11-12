@@ -1,0 +1,22 @@
+{
+  "membership": "Walmart+",
+  "slug": "walmart-plus",
+  "provider": "Walmart",
+  "annual_fee": 98,
+  "product_url": "https://www.walmart.com/plus",
+  "checked_at": "2026-11-12",
+  "benefits": [
+    {
+      "id": "fuel",
+      "name": "Walmart+ fuel savings",
+      "how": "discount",
+      "merchants": ["Walmart", "Exxon", "Mobil", "Murphy USA", "Murphy Express", "CITGO"],
+      "categories": ["gas"],
+      "cadence": "ongoing",
+      "instructions": "Up to 10¢ a gallon at participating Walmart, Exxon, Mobil, Murphy and CITGO stations; claim it through the Walmart+ benefit at the pump (terms at walmart.com/plus). Less at Walmart and Murphy in some states.",
+      "source_url": "https://corporate.walmart.com/news/2026/09/walmart-expands-gas-savings-to-17k-locations",
+      "source_excerpt": "save 10¢ per gallon ... without raising the $98 annual membership price",
+      "confidence": "issuer"
+    }
+  ]
+}

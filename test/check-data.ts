@@ -3,7 +3,8 @@
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { CADENCES, CATEGORIES, KINDS, REQUIRES, UNITS, yearlyCredits, type CardFile } from "../src/entitlements.ts";
+import { ACCOUNTS, CADENCES, CATEGORIES, KINDS, REQUIRES, UNITS, yearlyCredits, type CardFile, type MembershipFile, type TaxRules } from "../src/entitlements.ts";
+import { checkState, withMemberships } from "../src/expiring.ts";
 
 const DIR = new URL("../data/entitlements/", import.meta.url).pathname;
 const MAX_AGE_DAYS = 60;
@@ -56,4 +57,44 @@ for (const f of readdirSync(DIR).filter((f) => f.endsWith(".json")).sort()) {
   errs.forEach((e) => console.log("    " + e));
   failed += errs.length;
 }
+// Memberships and the IRS rules: same freshness rule, every benefit valid as a user benefit, every claim quoted from an https source.
+const DATA = new URL("../data/", import.meta.url).pathname;
+const fresh = (d: string) => {
+  const age = (Date.now() - new Date(d).getTime()) / 864e5;
+  return age >= 0 && age <= MAX_AGE_DAYS;
+};
+const quoted = (x: { source_url: string; source_excerpt: string }) => x.source_url?.startsWith("https://") && !!x.source_excerpt?.trim();
+for (const f of readdirSync(DATA + "memberships").filter((f) => f.endsWith(".json")).sort()) {
+  const m: MembershipFile = JSON.parse(readFileSync(join(DATA, "memberships", f), "utf8"));
+  const errs: string[] = [];
+  if (!m.membership || !m.slug || typeof m.annual_fee !== "number" || !m.benefits?.length) errs.push("needs membership, slug, annual_fee and benefits");
+  if (!fresh(m.checked_at)) errs.push(`checked_at "${m.checked_at}" not within ${MAX_AGE_DAYS} days`);
+  for (const b of m.benefits ?? []) {
+    if (!quoted(b)) errs.push(`${b.id}: needs an https source_url and a source_excerpt`);
+    if (!["issuer", "needs_verify"].includes(b.confidence)) errs.push(`${b.id}: confidence "${b.confidence}"`);
+  }
+  try {
+    checkState(withMemberships({ memberships: [m.slug] }, [m]));
+  } catch (e) {
+    errs.push((e as Error).message);
+  }
+  const verify = (m.benefits ?? []).filter((b) => b.confidence === "needs_verify").length;
+  console.log(`${errs.length ? "✗" : "✓"} ${m.slug}: $${m.annual_fee} fee · ${m.benefits?.length ?? 0} benefits · ${verify} to verify`);
+  errs.forEach((e) => console.log("    " + e));
+  failed += errs.length;
+}
+const tax: TaxRules = JSON.parse(readFileSync(DATA + "tax-accounts.json", "utf8"));
+const taxErrs: string[] = [];
+if (!fresh(tax.checked_at)) taxErrs.push(`checked_at "${tax.checked_at}" not within ${MAX_AGE_DAYS} days`);
+for (const acct of ACCOUNTS) if (!tax.rules[tax.accounts[acct]]) taxErrs.push(`${acct}: no rule set "${tax.accounts[acct]}"`);
+for (const [set, rules] of Object.entries(tax.rules))
+  for (const r of rules) {
+    if (!has(CATEGORIES, r.category)) taxErrs.push(`${set}/${r.category}: unknown category`);
+    if (!["eligible", "depends", "not_eligible"].includes(r.status)) taxErrs.push(`${set}/${r.category}: status "${r.status}"`);
+    if (!quoted(r) || !r.note) taxErrs.push(`${set}/${r.category}: needs a note, an https source_url and a source_excerpt`);
+  }
+console.log(`${taxErrs.length ? "✗" : "✓"} tax-accounts: ${Object.values(tax.rules).flat().length} rules`);
+taxErrs.forEach((e) => console.log("    " + e));
+failed += taxErrs.length;
+
 process.exit(failed ? 1 : 0);

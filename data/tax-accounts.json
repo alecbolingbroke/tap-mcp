@@ -1,0 +1,60 @@
+{
+  "about": "What an HSA, health FSA or dependent care FSA can pay for, by purchase category. IRS rules, the same for everyone; a plan can be narrower, never wider.",
+  "checked_at": "2026-11-12",
+  "accounts": { "hsa": "medical", "health_fsa": "medical", "dependent_care_fsa": "dependent_care" },
+  "rules": {
+    "medical": [
+      {
+        "category": "pharmacy",
+        "status": "depends",
+        "note": "Prescriptions, over-the-counter medicines and menstrual care products qualify. Toiletries, cosmetics and general-health vitamins don't.",
+        "source_url": "https://www.irs.gov/newsroom/irs-outlines-changes-to-health-care-spending-available-under-cares-act",
+        "source_excerpt": "In addition, over-the-counter products and medications are now reimbursable without a prescription. ... the cost of menstrual care products is now reimbursable. The new rules apply to amounts paid after Dec. 31, 2019."
+      },
+      {
+        "category": "medical",
+        "status": "eligible",
+        "note": "Care to diagnose, treat or prevent a condition (visits, copays, tests, procedures). Cosmetic surgery doesn't qualify.",
+        "source_url": "https://www.irs.gov/publications/p502",
+        "source_excerpt": "Medical expenses are the costs of diagnosis, cure, mitigation, treatment, or prevention of disease"
+      },
+      {
+        "category": "dental",
+        "status": "eligible",
+        "note": "Cleanings, fillings, braces and other dental care qualify. Whitening doesn't.",
+        "source_url": "https://www.irs.gov/publications/p502",
+        "source_excerpt": "You can include in medical expenses the amounts you pay for the prevention and alleviation of dental disease. ... You can't include in medical expenses amounts paid to whiten teeth."
+      },
+      {
+        "category": "vision",
+        "status": "eligible",
+        "note": "Glasses and contact lenses needed for medical reasons qualify.",
+        "source_url": "https://www.irs.gov/publications/p502",
+        "source_excerpt": "You can include in medical expenses amounts you pay for eyeglasses and contact lenses needed for medical reasons."
+      },
+      {
+        "category": "fitness",
+        "status": "not_eligible",
+        "note": "Gym and health club dues don't qualify. Separate fees for a weight-loss program that treats a specific disease can, usually with a doctor's letter.",
+        "source_url": "https://www.irs.gov/publications/p502",
+        "source_excerpt": "You can't include membership dues in a gym, health club, or spa as medical expenses ... but you can include separate fees charged there for weight loss activities"
+      },
+      {
+        "category": "childcare",
+        "status": "not_eligible",
+        "note": "Childcare isn't a medical expense. A dependent care FSA covers it instead.",
+        "source_url": "https://www.irs.gov/publications/p502",
+        "source_excerpt": "You can't include in medical expenses amounts you pay for the care of children, even if the expenses enable you"
+      }
+    ],
+    "dependent_care": [
+      {
+        "category": "childcare",
+        "status": "eligible",
+        "note": "Care for a child under 13 (daycare, after-school care) so you can work.",
+        "source_url": "https://www.irs.gov/publications/p503",
+        "source_excerpt": "Pre-tax contributions you made under a dependent care flexible spending arrangement. ... A qualifying person is: Your qualifying child who is your dependent and who was under age 13 when the care was provided"
+      }
+    ]
+  }
+}

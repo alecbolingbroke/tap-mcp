@@ -1,7 +1,7 @@
 // whats_expiring: what the user is about to lose. Two sources: balances they hold (codes, earned credits, certificates) with an
 // expiry date, and this period's recurring card credits they haven't used yet. Pure: data in, answer out. All dates are ISO
 // YYYY-MM-DD and compared as calendar days (UTC arithmetic on date-only values, so the user's timezone can't shift a day).
-import { PERIODS, type CardFile, type Entitlement } from "./entitlements.ts";
+import { ACCOUNTS, CATEGORIES, PERIODS, type Account, type CardFile, type Category, type Entitlement, type MembershipFile } from "./entitlements.ts";
 
 /** The user's own status. Lives outside the repo (~/.tap/state.json): it holds personal balances. */
 export type State = {
@@ -13,9 +13,64 @@ export type State = {
     /** entitlement id → ISO date the user said it was still unused (so Tap stops asking this period). */ checked?: Record<string, string>;
   }>;
   balances?: { name: string; program: string; owner?: string; value: number; unit: "USD" | "points" | "count"; expires?: string; notes?: string }[];
+  /** Benefits outside cards (set_benefits). Missing = never asked; [] = the user has none. */
+  benefits?: Benefit[];
+  /** Membership slugs from data/memberships (Costco Executive…): their benefits come from Tap's checked data, not from here. */
+  memberships?: string[];
 };
 
-export type Due = { expires: string; days_left: number; what: string; value: string; card?: string; /** card slug + credit id, for mark_credit */ mark?: { card: string; credit: string }; notes: string[] };
+export const BENEFIT_HOWS = ["pay_with", "reimburse", "discount", "allowance", "reward"] as const;
+export const BENEFIT_CADENCES = ["monthly", "quarterly", "semiannual", "calendar_year", "one_time", "ongoing"] as const;
+/** A benefit from a health plan, employer or membership, as the user described it. Unlike card perks it's per person, so it lives here. */
+export type Benefit = {
+  id: string;
+  /** Who gives it: "Health plan", "Employer", "Costco". */ source: string;
+  name: string;
+  /** pay_with: a separate account pays (HSA, FSA, commuter card). reimburse: pay, then claim it back. discount: cheaper at checkout.
+   * allowance: a set amount per period. reward: earned automatically (a membership's % back). */
+  how: (typeof BENEFIT_HOWS)[number];
+  /** A pre-tax account: Tap then checks each purchase against the IRS rules in data/tax-accounts.json. */ account?: Account;
+  categories?: Category[];
+  /** Categories excluded even at a listed merchant (Costco's reward skips gas). */ except?: Category[];
+  merchants?: string[];
+  /** Per cadence period (50 + monthly = $50 a month), or a percent with unit "pct". */ value?: number;
+  unit?: "USD" | "pct";
+  cadence?: (typeof BENEFIT_CADENCES)[number];
+  /** "MM-DD" the benefit year starts, when it isn't Jan 1. */ resets_on?: string;
+  /** ISO date it must be used by (an FSA deadline, a one-time stipend). */ expires?: string;
+  /** How to use it, e.g. "pay with the HSA debit card", "submit the receipt in the benefits app". */ instructions?: string;
+  /** Where the terms come from: a quote from the user's plan document, or (by "tap") Tap's checked membership data. */
+  evidence?: { source: string; quote: string; checked_at?: string; by?: "tap"; needs_verify?: boolean };
+  /** ISO dates: last used, and last confirmed unused (mark_benefit). */ used?: string;
+  checked?: string;
+};
+
+/** The user's own benefits plus those of the memberships they hold, read from data so a re-check reaches everyone. */
+export function withMemberships(state: State, files: MembershipFile[]): State {
+  const extra = (state.memberships ?? []).flatMap((slug): Benefit[] => {
+    const m = files.find((f) => f.slug === slug);
+    return (m?.benefits ?? []).map(({ source_url, source_excerpt, confidence, ...b }) => ({
+      ...b,
+      id: `${slug}/${b.id}`,
+      source: m!.membership,
+      evidence: { source: source_url, quote: source_excerpt, checked_at: m!.checked_at, by: "tap", ...(confidence === "needs_verify" && { needs_verify: true }) },
+    }));
+  });
+  return extra.length ? { ...state, benefits: [...(state.benefits ?? []), ...extra] } : state;
+}
+
+/** A benefit in the card-entitlement shape, so period() and creditStatus() work on it unchanged. */
+export const asEntitlement = (b: Benefit): Entitlement => ({
+  id: b.id, kind: b.how === "discount" ? "perk" : "credit", name: b.name, value: b.value ?? null, unit: b.unit ?? null,
+  cadence: b.cadence ?? "ongoing", resets_on: b.resets_on, trigger: { merchants: b.merchants, categories: b.categories },
+  requires: [], limits: null, source_url: "", checked_at: "", confidence: "issuer",
+});
+/** A fixed amount that resets each period, so "used it yet?" is worth asking. */
+export const tracksUse = (b: Benefit) => b.value !== undefined && b.unit !== "pct" && !!b.cadence && b.cadence !== "ongoing";
+export const benefitStatus = (b: Benefit, today: string) =>
+  creditStatus(asEntitlement(b), { used: b.used ? { [b.id]: b.used } : undefined, checked: b.checked ? { [b.id]: b.checked } : undefined }, today);
+
+export type Due = { expires: string; days_left: number; what: string; value: string; card?: string; /** card slug + credit id, for mark_credit */ mark?: { card: string; credit: string }; /** benefit id, for mark_benefit */ benefit?: string; notes: string[] };
 export type ExpiringAnswer = { due: Due[]; gaps: string[] };
 
 const DAY = 86_400_000;
@@ -70,6 +125,24 @@ export function checkState(s: State): State {
     if (!b.name || typeof b.value !== "number") throw new Error(`each balance needs a name and a numeric value`);
     if (b.expires && !isIsoDate(b.expires)) throw new Error(`balance "${b.name}" expires must be YYYY-MM-DD`);
   }
+  if (s.benefits !== undefined && !Array.isArray(s.benefits)) throw new Error("benefits must be a list");
+  if (s.memberships !== undefined && !(Array.isArray(s.memberships) && s.memberships.every((x) => typeof x === "string"))) throw new Error("memberships must be a list of slugs");
+  for (const b of s.benefits ?? []) {
+    if (!b.id || !b.source?.trim() || !b.name?.trim()) throw new Error("each benefit needs a source and a name");
+    if (!BENEFIT_HOWS.includes(b.how)) throw new Error(`benefit "${b.name}" how must be one of: ${BENEFIT_HOWS.join(", ")}`);
+    if (b.cadence !== undefined && !BENEFIT_CADENCES.includes(b.cadence)) throw new Error(`benefit "${b.name}" cadence must be one of: ${BENEFIT_CADENCES.join(", ")}`);
+    const bad = (b.categories ?? []).find((c) => !CATEGORIES.includes(c));
+    if (bad) throw new Error(`benefit "${b.name}" has an unknown category "${bad}"`);
+    if (b.account !== undefined && !ACCOUNTS.includes(b.account)) throw new Error(`benefit "${b.name}" account must be one of: ${ACCOUNTS.join(", ")}`);
+    const badExcept = (b.except ?? []).find((c) => !CATEGORIES.includes(c));
+    if (badExcept) throw new Error(`benefit "${b.name}" has an unknown except category "${badExcept}"`);
+    if (!b.categories?.length && !b.merchants?.length && !b.account) throw new Error(`benefit "${b.name}" needs categories, merchants or an account, so Tap knows which purchases it covers`);
+    if (b.evidence !== undefined && !(b.evidence.source?.trim() && b.evidence.quote?.trim())) throw new Error(`benefit "${b.name}" evidence needs a source and a quote`);
+    if (b.value !== undefined && !(typeof b.value === "number" && b.value >= 0)) throw new Error(`benefit "${b.name}" value must be a number, 0 or more`);
+    if (b.unit !== undefined && b.unit !== "USD" && b.unit !== "pct") throw new Error(`benefit "${b.name}" unit must be USD or pct`);
+    if (b.resets_on && !isMonthDay(b.resets_on)) throw new Error(`benefit "${b.name}" resets_on must be MM-DD`);
+    for (const k of ["expires", "used", "checked"] as const) if (b[k] && !isIsoDate(b[k])) throw new Error(`benefit "${b.name}" ${k} must be YYYY-MM-DD`);
+  }
   return s;
 }
 
@@ -121,6 +194,18 @@ export function expiring(state: State, cards: CardFile[], held: string[], today:
       });
     }
     if (needsAnniversary.length) gaps.push(`Set the card anniversary (MM-DD) for ${card.card} to track: ${needsAnniversary.join(", ")}.`);
+  }
+
+  for (const b of state.benefits ?? []) {
+    // A discount or a percent can't be lost; an allowance lapses at its period end, anything with a deadline at that date.
+    if (b.how === "discount" || b.how === "reward" || b.unit === "pct") continue;
+    const p = tracksUse(b) ? period(asEntitlement(b), today) : null;
+    const end = Math.min(p?.end ?? Infinity, b.expires ? day(b.expires) : Infinity);
+    if (end === Infinity || benefitStatus(b, today).status === "used") continue;
+    const days = Math.round((end - t) / DAY);
+    if (days > horizonDays) continue;
+    const notes = [`From ${b.source}.`, days < 0 ? "Already expired." : "", b.instructions ?? ""].filter(Boolean);
+    due.push({ expires: iso(end), days_left: days, what: b.name, value: b.value === undefined ? "value unknown" : money(b.value, "USD"), benefit: b.id, notes });
   }
 
   due.sort((a, b) => a.expires.localeCompare(b.expires));
