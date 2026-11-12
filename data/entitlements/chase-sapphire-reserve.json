@@ -1,0 +1,949 @@
+{
+  "card": "Chase Sapphire Reserve",
+  "slug": "chase-sapphire-reserve",
+  "issuer": "Chase",
+  "network": "Visa",
+  "annual_fee": 795,
+  "offered": true,
+  "product_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+  "checked_at": "2026-10-16",
+  "notes": "2025 refresh terms: $795 fee ($195 per authorized user); The Edit credit calendar-year from Jan 1, 2026; several partner credits expire 2027-2029.",
+  "entitlements": [
+    {
+      "id": "travel-credit",
+      "kind": "credit",
+      "name": "Annual travel credit",
+      "value": 300,
+      "unit": "USD",
+      "cadence": "card_anniversary",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "travel"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Up to $300 in statement credits per account anniversary year, applied automatically to travel purchases; the covered portion earns no points.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "up to $300 in statement credits for travel purchases each account anniversary year. Purchases that qualify will not earn points.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "the-edit-credit",
+      "kind": "credit",
+      "name": "The Edit hotel credit",
+      "value": 500,
+      "unit": "USD",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "The Edit by Chase Travel"
+        ],
+        "categories": [
+          "hotel"
+        ],
+        "channel": "prepaid (Pay Now) The Edit booking via Chase Travel"
+      },
+      "requires": [
+        "book_via_channel",
+        "pay_with_card"
+      ],
+      "limits": "Up to $250 per prepaid booking, max $500 per calendar year (started Jan 1, 2026); 2-night minimum stay; covered portion earns no points. Per-booking cap, not a half-year split.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Receive a statement credit of up to $250 for each prepaid booking with The Edit, up to $500 annually. Two-night minimum.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "dining-credit-exclusive-tables",
+      "kind": "credit",
+      "name": "Dining credit (Sapphire Reserve Exclusive Tables)",
+      "value": 300,
+      "unit": "USD",
+      "cadence": "semiannual",
+      "trigger": {
+        "merchants": [
+          "Sapphire Reserve Exclusive Tables restaurants on OpenTable"
+        ],
+        "categories": [
+          "dining"
+        ],
+        "channel": "purchase made directly with a participating restaurant"
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "$150 Jan-Jun and $150 Jul-Dec. Must be identifiable as a direct restaurant purchase; gift cards, merchandise, third-party processors and delivery apps don't qualify.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Get up to $150 in statement credits from January through June and again from July through December for a maximum of $300 annually when you dine at restaurants part of the Sapphire Reserve Exclusive Tables",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "stubhub-credit",
+      "kind": "credit",
+      "name": "StubHub / viagogo credit",
+      "value": 300,
+      "unit": "USD",
+      "cadence": "semiannual",
+      "trigger": {
+        "merchants": [
+          "StubHub",
+          "viagogo"
+        ],
+        "categories": [
+          "entertainment"
+        ],
+        "channel": "stubhub.com / viagogo.com or their apps"
+      },
+      "requires": [
+        "activation",
+        "pay_with_card"
+      ],
+      "limits": "$150 Jan-Jun and $150 Jul-Dec, through Dec 31, 2027. Gift cards excluded; UK-event purchases can't be made via stubhub.com.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Get up to $150 in statement credits from January through June and again from July through December for a maximum of $300 annually for StubHub and viagogo purchases through 12/31/2027. Activation required.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "apple-tv-apple-music",
+      "kind": "perk",
+      "name": "Apple TV + Apple Music subscriptions",
+      "value": 324,
+      "unit": "USD",
+      "cadence": "window_after_trigger",
+      "trigger": {
+        "merchants": [
+          "Apple TV",
+          "Apple Music"
+        ],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "activation"
+      ],
+      "limits": "One-time activation on chase.com or the Chase app by June 22, 2027; primary cardmember gets at least 12 months of each from activation. Pauses an existing paid Apple subscription. Not a statement credit.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Get complimentary subscriptions to Apple TV and Apple Music for a minimum of one year when activated by June 22, 2027, a value of $324 annually.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer",
+      "window_months": 12
+    },
+    {
+      "id": "dashpass-membership",
+      "kind": "perk",
+      "name": "DashPass membership",
+      "value": 120,
+      "unit": "USD",
+      "cadence": "window_after_trigger",
+      "trigger": {
+        "merchants": [
+          "DoorDash",
+          "Caviar"
+        ],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "activation",
+        "pay_with_card"
+      ],
+      "limits": "Complimentary 12-month DashPass; activate by Dec 31, 2029 by enrolling the card on DoorDash/Caviar. Not a statement credit.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Complimentary DashPass membership, a $120 value for 12 months. ... Activate by 12/31/29.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer",
+      "window_months": 12
+    },
+    {
+      "id": "doordash-promos",
+      "kind": "credit",
+      "name": "DoorDash monthly promos",
+      "value": 420,
+      "unit": "USD",
+      "cadence": "monthly",
+      "trigger": {
+        "merchants": [
+          "DoorDash"
+        ],
+        "categories": [
+          "food_delivery",
+          "grocery"
+        ],
+        "channel": "DoorDash app/website promotion wallet"
+      },
+      "requires": [
+        "enrollment",
+        "pay_with_card"
+      ],
+      "limits": "Up to $35/month: one $15 promo on any qualifying order plus two $10 promos on non-restaurant orders (grocery, essentials). Requires the card-linked DashPass; unused value forfeits monthly; no rollover; through Dec 31, 2029. In-app discount, not a statement credit.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "DashPass members now get up to $35 each month to spend on DoorDash – including a $15 monthly promo on any qualifying DoorDash order and two $10 promos each month",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "lyft-credit",
+      "kind": "credit",
+      "name": "Lyft ride credit",
+      "value": 120,
+      "unit": "USD",
+      "cadence": "monthly",
+      "trigger": {
+        "merchants": [
+          "Lyft"
+        ],
+        "categories": [
+          "rideshare"
+        ],
+        "channel": "Lyft app with the card as payment"
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Up to $10/month in in-app ride credit, through Sep 30, 2027. In-app credit, not a statement credit.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Lyft members can get access to up to $10 in monthly in-app credits, up to $120 annually, to use on rides through 9/30/2027.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "peloton-credit",
+      "kind": "credit",
+      "name": "Peloton membership credit",
+      "value": 120,
+      "unit": "USD",
+      "cadence": "monthly",
+      "trigger": {
+        "merchants": [
+          "Peloton"
+        ],
+        "categories": [
+          "fitness"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "activation",
+        "pay_with_card"
+      ],
+      "limits": "$10/month statement credit on eligible Peloton memberships, max $120/year, through Dec 31, 2027.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Get $10 in statement credits per month on eligible Peloton memberships through 12/31/2027, for a maximum of $120 annually. * Activation required.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "global-entry-tsa-nexus-credit",
+      "kind": "credit",
+      "name": "Global Entry / TSA PreCheck / NEXUS fee credit",
+      "value": 120,
+      "unit": "USD",
+      "cadence": "every_n_years",
+      "trigger": {
+        "merchants": [
+          "Global Entry",
+          "TSA PreCheck",
+          "NEXUS"
+        ],
+        "categories": [],
+        "channel": "paid directly to DHS or an authorized enrollment provider"
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "One statement credit of up to $120 every four years for the first application fee charged. Cadence enum has no 4-year option; value is per 4-year cycle (~$30/yr annualized).",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Receive one statement credit of up to $120 every four years as reimbursement for the application fee charged to your card.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer",
+      "every_years": 4
+    },
+    {
+      "id": "75k-shops-at-chase-credit",
+      "kind": "credit",
+      "name": "$250 The Shops at Chase credit ($75k spend)",
+      "value": 250,
+      "unit": "USD",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "The Shops at Chase"
+        ],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "minimum_spend"
+      ],
+      "limits": "Unlocked by $75,000 spend in a calendar year; available for the rest of that year and the following calendar year (max $500 available if earned in consecutive years). Threshold-triggered, not a fixed cadence.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Spend $75,000 each calendar year and unlock status and credits ... $250 Credit for The Shops at Chase",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "75k-southwest-chase-travel-credit",
+      "kind": "credit",
+      "name": "$500 Southwest Chase Travel credit ($75k spend)",
+      "value": 500,
+      "unit": "USD",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "Southwest Airlines"
+        ],
+        "categories": [],
+        "channel": "Southwest flights booked via Chase Travel"
+      },
+      "requires": [
+        "minimum_spend",
+        "book_via_channel"
+      ],
+      "limits": "Unlocked by $75,000 spend in a calendar year; usable for the rest of that year and the following calendar year; covered portion earns no points. Threshold-triggered, not a fixed cadence.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Spend $75,000 each calendar year and unlock status and credits ... $500 Southwest Airlines Chase Travel credit",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "chase-travel-8x",
+      "kind": "multiplier",
+      "name": "8x Chase Travel (incl. The Edit)",
+      "value": 8,
+      "unit": "points_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "airfare",
+          "hotel",
+          "vacation_rental",
+          "vacation_packages"
+        ],
+        "channel": "Chase Travel"
+      },
+      "requires": [
+        "book_via_channel"
+      ],
+      "limits": "Travel Designers/FROSCH bookings earn 8x only if booked directly through Chase Travel. Purchases covered by the travel or Edit credit earn no points.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "8x points on all purchases through Chase Travel, including The Edit",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "flights-direct-4x",
+      "kind": "multiplier",
+      "name": "4x flights booked direct",
+      "value": 4,
+      "unit": "points_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "airfare"
+        ],
+        "channel": "booked directly with the airline"
+      },
+      "requires": [],
+      "limits": null,
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "4x points on flights booked direct",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "hotels-direct-4x",
+      "kind": "multiplier",
+      "name": "4x hotels booked direct",
+      "value": 4,
+      "unit": "points_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "hotel"
+        ],
+        "channel": "booked directly with the hotel"
+      },
+      "requires": [],
+      "limits": null,
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "4x points on hotels booked direct",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "dining-3x",
+      "kind": "multiplier",
+      "name": "3x dining",
+      "value": 3,
+      "unit": "points_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "dining",
+          "food_delivery"
+        ],
+        "channel": null
+      },
+      "requires": [],
+      "limits": null,
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "3x points on dining worldwide",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "everything-else-1x",
+      "kind": "multiplier",
+      "name": "1x all other purchases",
+      "value": 1,
+      "unit": "points_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "everything"
+        ],
+        "channel": null
+      },
+      "requires": [],
+      "limits": null,
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "1x points on all other purchases",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "lyft-5x",
+      "kind": "multiplier",
+      "name": "5x Lyft rides",
+      "value": 5,
+      "unit": "points_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Lyft"
+        ],
+        "categories": [
+          "rideshare"
+        ],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Total 5x on Lyft rides through Sep 30, 2027; excludes gift cards, car rentals, fees and other Lyft products.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Plus, earn 5x total points on Lyft rides through 9/30/2027.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "peloton-10x",
+      "kind": "multiplier",
+      "name": "10x Peloton equipment",
+      "value": 10,
+      "unit": "points_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Peloton"
+        ],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Eligible equipment/accessory purchases over $150, through Dec 31, 2027, 10x applies to up to $5,000 in total purchases; no apparel, gift cards, non-US or HSA/FSA Truemed checkout.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "earn 10x total points on eligible Peloton equipment and accessory purchases over $150 through 12/31/2027.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "points-boost",
+      "kind": "perk",
+      "name": "Points Boost (up to 2x value)",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "hotel",
+          "airline"
+        ],
+        "channel": "select hotels (incl. The Edit) and flights via Chase Travel"
+      },
+      "requires": [
+        "book_via_channel"
+      ],
+      "limits": "Points redeemed at up to 2 cents each on rotating select offers; base value 1 cent. Unit is a redemption multiplier, which the unit enum doesn't cover, so unit is null.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "With Points Boost, your points are worth up to 2x on top booked hotels, including The Edit, and flights with select airlines through Chase Travel.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "lounge-sapphire-priority-pass",
+      "kind": "perk",
+      "name": "Chase Sapphire Lounges + Priority Pass Select",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Chase Sapphire Lounge by The Club",
+          "Priority Pass"
+        ],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "enrollment"
+      ],
+      "limits": "Cardmember plus up to two guests; extra guests $27 each per visit. Physical Priority Pass card needed (digital wallet card not accepted). Access subject to capacity.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "access to any Chase Sapphire Lounges by The Club and 1,300+ Priority Pass TM airport lounges worldwide with up to two guests",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "lounge-air-canada-maple-leaf",
+      "kind": "perk",
+      "name": "Air Canada Maple Leaf Lounges & Cafés",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Air Canada Maple Leaf Lounge",
+          "Air Canada Café"
+        ],
+        "categories": [],
+        "channel": "departing on a Star Alliance flight"
+      },
+      "requires": [],
+      "limits": "Cardmember plus one guest at participating lounges in Canada, the US and Europe; guest fee applies at US lounges; Montreal (YUL) lounges and Signature Suites excluded.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "1 guest each to Air Canada's network of Maple Leaf Lounges and Air Canada Cafés across participating locations in Canada, the U.S. and Europe, when departing on a Star Alliance",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "ihg-platinum-elite",
+      "kind": "status",
+      "name": "IHG One Rewards Platinum Elite",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "IHG"
+        ],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "enrollment"
+      ],
+      "limits": "Through Dec 31, 2027; activate by linking an IHG One Rewards account on chase.com or the Chase app.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Get complimentary IHG One Rewards Platinum Elite Status with your Sapphire Reserve card through December 31, 2027.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "75k-hyatt-explorist",
+      "kind": "status",
+      "name": "World of Hyatt Explorist ($75k spend)",
+      "value": null,
+      "unit": null,
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "World of Hyatt"
+        ],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "minimum_spend",
+        "enrollment"
+      ],
+      "limits": "Unlocked by $75,000 calendar-year spend; held for the rest of that year and the following year; link Hyatt account.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Benefits include: World of Hyatt Explorist Status",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "75k-ihg-diamond-elite",
+      "kind": "status",
+      "name": "IHG One Rewards Diamond Elite ($75k spend)",
+      "value": null,
+      "unit": null,
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "IHG"
+        ],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "minimum_spend",
+        "enrollment"
+      ],
+      "limits": "Unlocked by $75,000 calendar-year spend; rest of that year plus the following year; auto-activates if Platinum Elite was already linked.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "IHG One Rewards Diamond Elite Status",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "75k-southwest-a-list",
+      "kind": "status",
+      "name": "Southwest Rapid Rewards A-List ($75k spend)",
+      "value": null,
+      "unit": null,
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "Southwest Airlines"
+        ],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "minimum_spend",
+        "enrollment"
+      ],
+      "limits": "Unlocked by $75,000 calendar-year spend; rest of that year plus the following year (expires Dec 31).",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "you, as the primary cardmember, will be eligible for Southwest Rapid Rewards A-List status for the remainder of the calendar year in which you qualify through the following calendar year",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "edit-property-benefits",
+      "kind": "perk",
+      "name": "The Edit property benefits",
+      "value": null,
+      "unit": null,
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [
+          "The Edit by Chase Travel"
+        ],
+        "categories": [],
+        "channel": "The Edit booking via Chase Travel"
+      },
+      "requires": [
+        "book_via_channel"
+      ],
+      "limits": "$100 property credit, daily breakfast for two, Wi-Fi, room upgrade and early check-in/late check-out when available; varies by property.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "$100 property credit, daily breakfast for two, complimentary Wi-Fi, a room upgrade and early check-in/late check-out",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "reserve-travel-designers",
+      "kind": "perk",
+      "name": "Reserve Travel Designers",
+      "value": null,
+      "unit": null,
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Custom itinerary service Chase values at up to $300 per trip; no dollar credit.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "This personalized service is valued at up to $300 per trip.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "primary-auto-rental-cdw",
+      "kind": "insurance",
+      "name": "Primary auto rental collision coverage",
+      "value": 75000,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "car_rental"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Decline the rental company's CDW and pay the full rental with the card; up to $75,000 theft/collision; secondary inside the US for New York residents.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Coverage is primary and provides reimbursement up to $75,000 for theft and collision damage for most rental vehicles in the U.S. and abroad.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "trip-cancellation-interruption",
+      "kind": "insurance",
+      "name": "Trip cancellation / interruption",
+      "value": 10000,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Up to $10,000 per covered traveler and $20,000 per trip for prepaid, nonrefundable fares/tours/hotels.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "you can be reimbursed up to $10,000 per covered traveler and $20,000 per trip for your pre-paid",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "trip-delay",
+      "kind": "insurance",
+      "name": "Trip delay reimbursement",
+      "value": 500,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Common-carrier delay over 6 hours or requiring an overnight stay; up to $500 per covered traveler for meals, lodging etc.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "If your common carrier travel is delayed more than 6 hours or requires an overnight stay, you are covered for unreimbursed expenses, such as meals and lodging, up to $500 per covered traveler.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "lost-luggage",
+      "kind": "insurance",
+      "name": "Lost luggage reimbursement",
+      "value": 3000,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Up to $3,000 per covered traveler; NY residents limited to $2,000/bag and $10,000 per trip.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Provides reimbursement up to $3,000 per covered traveler for the cost to repair or replace checked or carry-on baggage that is lost, damaged or stolen",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "baggage-delay",
+      "kind": "insurance",
+      "name": "Baggage delay insurance",
+      "value": 500,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Up to $100/day for up to 5 days for essentials when bags are delayed over 6 hours.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Reimburses you up to $100 a day for up to 5 days for essential purchases like toiletries and clothing when baggage is delayed over 6 hours.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "travel-accident",
+      "kind": "insurance",
+      "name": "Travel accident insurance",
+      "value": 1000000,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Up to $1,000,000 accidental death/dismemberment when common-carrier fare is paid with the card.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "When you pay for your air, bus, train or cruise transportation with your card, you are eligible to receive up to $1,000,000 in accidental death or dismemberment coverage.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "emergency-evacuation",
+      "kind": "insurance",
+      "name": "Emergency evacuation and transportation",
+      "value": 100000,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Up to $100,000 for medical services and transport after injury/illness on a trip 100+ miles from home.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "injured or become sick during a trip 100 miles or more from home that results in an emergency evacuation, you can be covered for medical services and transportation up to $100,000.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "emergency-medical-dental",
+      "kind": "insurance",
+      "name": "Emergency medical and dental",
+      "value": 2500,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Up to $2,500 with a $50 deductible on trips 100+ miles from home.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "sick or injured while you're 100 miles or more from home on a trip, you can be reimbursed up to $2,500 for medical expenses, subject to a $50 deductible.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "roadside-assistance",
+      "kind": "perk",
+      "name": "Roadside assistance",
+      "value": 50,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Up to $50 per service event, up to 4 events per year.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "you can call for a tow, battery assistance, tire change, locksmith or gas. You're covered up to $50 per incident 4 times a year.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "purchase-protection",
+      "kind": "protection",
+      "name": "Purchase protection",
+      "value": 10000,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Damage or theft within 120 days of purchase (90 days for NY residents), up to $10,000 per item.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Covers your eligible new purchases for 120 days from the date of purchase against damage or theft up to $10,000 per item.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "return-protection",
+      "kind": "protection",
+      "name": "Return protection",
+      "value": 500,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Items the store won't take back within 90 days; up to $500 per item and $1,000 per 12-month period.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "reimbursed for eligible items that the store won't accept within 90 days of purchase, up to $500 per item, $1,000 per 12-month period.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "extended-warranty",
+      "kind": "protection",
+      "name": "Extended warranty",
+      "value": 1,
+      "unit": "count",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Adds 1 year to eligible US manufacturer warranties of 3 years or less, up to 4 years from purchase. Value = extra years.",
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Extends the time period of the manufacturer's U.S. warranty by an additional year, on eligible warranties of three years or less, up to four years from the date of purchase.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "no-foreign-transaction-fees",
+      "kind": "perk",
+      "name": "No foreign transaction fees",
+      "value": 0,
+      "unit": "pct",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [],
+      "limits": null,
+      "source_url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      "source_excerpt": "Spend anywhere in the world with no foreign transaction fees on one of the most widely accepted global networks.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    }
+  ]
+}

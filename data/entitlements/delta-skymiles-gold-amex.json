@@ -1,0 +1,487 @@
+{
+  "card": "Delta SkyMiles Gold American Express Card",
+  "slug": "delta-skymiles-gold-amex",
+  "issuer": "American Express",
+  "network": "Amex",
+  "annual_fee": 150,
+  "offered": true,
+  "product_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+  "checked_at": "2026-10-16",
+  "notes": "$0 intro annual fee first year, then $150. New in 2026: second checked bag free on domestic Delta flights and a $10/month rideshare credit (after first renewal, enrollment required).",
+  "entitlements": [
+    {
+      "id": "annual-fee-first-year-waiver",
+      "kind": "perk",
+      "name": "First-year annual fee waived",
+      "value": 150,
+      "unit": "USD",
+      "cadence": "one_time",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Annual fee is $0 for the first year of membership, then $150 per year.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "Annual Fee : $0 introductory annual fee for the first year, then $150.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "earn-delta-2x",
+      "kind": "multiplier",
+      "name": "2X miles on Delta purchases",
+      "value": 2,
+      "unit": "miles_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Delta"
+        ],
+        "categories": [
+          "airfare"
+        ],
+        "channel": "purchases made directly with Delta"
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": null,
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "2X MILES On Delta Purchases Made directly with Delta.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "earn-dining-2x",
+      "kind": "multiplier",
+      "name": "2X miles on dining",
+      "value": 2,
+      "unit": "miles_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "dining",
+          "food_delivery"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Restaurants worldwide; takeout and delivery only in the U.S.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "2X MILES On Dining At restaurants, including takeout and delivery in the U.S.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "earn-groceries-2x",
+      "kind": "multiplier",
+      "name": "2X miles at U.S. supermarkets",
+      "value": 2,
+      "unit": "miles_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "grocery"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "U.S. supermarkets only.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "2X MILES On Groceries At U.S. supermarkets.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "earn-base-1x",
+      "kind": "multiplier",
+      "name": "1X miles on other purchases",
+      "value": 1,
+      "unit": "miles_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "everything"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": null,
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "1X MILES Per Dollar On Other Purchases.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "delta-flight-credit-10k",
+      "kind": "credit",
+      "name": "$200 Delta Flight Credit after $10K spend",
+      "value": 200,
+      "unit": "USD",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "minimum_spend"
+      ],
+      "limits": "Earned after $10,000 in eligible purchases in a calendar year; issued as a Delta Flight Credit for future travel, not cash. Expiry window of the issued credit not confirmed on issuer page.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "After you spend $10,000 in eligible purchases on your Card in a calendar year, you can receive a $200 Delta Flight Credit to use toward future travel.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "delta-stays-credit",
+      "kind": "credit",
+      "name": "Delta Stays credit",
+      "value": 100,
+      "unit": "USD",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "Delta Stays"
+        ],
+        "categories": [
+          "hotel",
+          "vacation_rental"
+        ],
+        "channel": "prepaid booking through Delta Stays on delta.com"
+      },
+      "requires": [
+        "pay_with_card",
+        "book_via_channel"
+      ],
+      "limits": "Up to $100 back per year as a statement credit on prepaid hotels or vacation rentals. Issuer pages say 'per year'/'annually'; calendar-year vs card-year reset not stated on the pages checked.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "Get up to $100 back per year as a statement credit after using your Delta SkyMiles Gold American Express Card to book prepaid hotels or vacation rentals through Delta Stays on delta.com.",
+      "checked_at": "2026-10-16",
+      "confidence": "needs_verify"
+    },
+    {
+      "id": "rideshare-credit",
+      "kind": "credit",
+      "name": "Rideshare credit",
+      "value": 120,
+      "unit": "USD",
+      "cadence": "monthly",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "rideshare"
+        ],
+        "channel": "U.S. rideshare purchases with select providers"
+      },
+      "requires": [
+        "enrollment",
+        "pay_with_card"
+      ],
+      "limits": "Up to $10 per month ($120/yr), starting only after the first card renewal. Eligible providers not named on the pages checked.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "After your first Card renewal, earn up to $10 in statement credits each month when using your Delta SkyMiles Gold American Express Card on U.S. rideshare purchases with select providers.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "first-checked-bag-free",
+      "kind": "perk",
+      "name": "First checked bag free",
+      "value": null,
+      "unit": "count",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Delta"
+        ],
+        "categories": [],
+        "channel": "Delta-operated flights worldwide"
+      },
+      "requires": [],
+      "limits": "Delta flights worldwide. Eligibility details (linked SkyMiles number, companions on reservation) are in benefit terms not reviewed.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "Enjoy your first checked bag free on Delta flights worldwide",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "second-checked-bag-free-domestic",
+      "kind": "perk",
+      "name": "Second checked bag free (domestic)",
+      "value": null,
+      "unit": "count",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Delta"
+        ],
+        "categories": [],
+        "channel": "domestic Delta flights"
+      },
+      "requires": [],
+      "limits": "Domestic Delta flights only. Marked NEW on the issuer page.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "and on domestic Delta flights, your second bag flies free too.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "zone-5-priority-boarding",
+      "kind": "perk",
+      "name": "Zone 5 Priority Boarding",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Delta"
+        ],
+        "categories": [],
+        "channel": "Delta flights"
+      },
+      "requires": [],
+      "limits": null,
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "Receive Zone 5 Priority Boarding on Delta flights; board early, stow your carry-on bag and settle in sooner.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "inflight-20-pct-back",
+      "kind": "credit",
+      "name": "20% back on in-flight purchases",
+      "value": 20,
+      "unit": "pct",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [
+          "Delta"
+        ],
+        "categories": [
+          "inflight"
+        ],
+        "channel": "on board Delta flights"
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Statement credit on eligible in-flight food and beverage purchases only.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "Receive a 20% savings in the form of a statement credit after you use your Delta SkyMiles Gold American Express Card on eligible Delta in-flight purchases of food and beverages.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "takeoff-15",
+      "kind": "perk",
+      "name": "TakeOff 15 award discount",
+      "value": 15,
+      "unit": "pct",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [
+          "Delta"
+        ],
+        "categories": [
+          "award_travel"
+        ],
+        "channel": "delta.com or Fly Delta app"
+      },
+      "requires": [
+        "book_via_channel"
+      ],
+      "limits": "15% fewer miles on Delta award flights; not for partner-operated flights or taxes and fees.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "Take 15% off anytime you book Award Travel with miles on Delta flights when using delta.com and the Fly Delta app.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "pay-with-miles",
+      "kind": "perk",
+      "name": "Pay with Miles",
+      "value": null,
+      "unit": null,
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [
+          "Delta"
+        ],
+        "categories": [],
+        "channel": "delta.com"
+      },
+      "requires": [
+        "book_via_channel"
+      ],
+      "limits": "Up to $50 off a flight per 5,000 miles redeemed.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "Take up to $50 off the cost of your flight for every 5,000 miles you redeem with Pay with Miles when you book on delta.com.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "no-foreign-transaction-fees",
+      "kind": "perk",
+      "name": "No foreign transaction fees",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [],
+      "limits": null,
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "Enjoy international travel without additional fees on purchases made abroad.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "baggage-insurance",
+      "kind": "insurance",
+      "name": "Baggage Insurance Plan",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "common_carrier_fare"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Entire common-carrier fare must be on the card. Up to $1,250 carry-on and $500 checked, in excess of carrier coverage; NY residents $10,000 aggregate per trip.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "Coverage can be provided for up to $1,250 for carry-on Baggage and up to $500 for checked Baggage, in excess of coverage provided by the Common Carrier.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "car-rental-loss-damage",
+      "kind": "insurance",
+      "name": "Car Rental Loss and Damage Insurance",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "car_rental"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Secondary coverage, no liability. Reserve and pay the entire rental on the card and decline the CDW. Not available in Australia, Italy, New Zealand; some vehicle types excluded.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "This product provides secondary coverage and does not include liability coverage.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "global-assist-hotline",
+      "kind": "perk",
+      "name": "Global Assist Hotline",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": "travel 100+ miles from home"
+      },
+      "requires": [],
+      "limits": "24/7 coordination and referrals; cardholder pays third-party provider costs.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "Whenever you travel more than 100 miles from home, Global Assist Hotline is available for 24/7 emergency assistance and coordination services",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "purchase-protection",
+      "kind": "protection",
+      "name": "Purchase Protection",
+      "value": null,
+      "unit": null,
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Theft or accidental damage within 90 days of purchase; up to $1,000 per covered purchase, $50,000 per calendar year.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "Up to $1,000 per Covered Purchase, up to $50,000 per calendar year.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "extended-warranty",
+      "kind": "protection",
+      "name": "Extended Warranty",
+      "value": null,
+      "unit": null,
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Adds up to 1 year to original manufacturer warranties of 5 years or less; U.S. and territories purchases.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "you can get up to one extra year added to the Original Manufacturer's Warranty. Applies to warranties of 5 years or less",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "venue-collection-concessions",
+      "kind": "credit",
+      "name": "Amex Venue Collection concessions 10% back",
+      "value": 10,
+      "unit": "pct",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [
+          "American Express Venue Collection venues"
+        ],
+        "categories": [
+          "stadium_concessions"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "enrollment",
+        "pay_with_card"
+      ],
+      "limits": "Qualifying concessions at participating venues; up to $250 back per calendar year; one enrolled card per member.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+      "source_excerpt": "eligible Card Members can enroll their Card and get 10% back on qualifying concessions purchases at venues/arenas/stadiums in the American Express Venue collection, up to $250 per calendar year.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    }
+  ]
+}

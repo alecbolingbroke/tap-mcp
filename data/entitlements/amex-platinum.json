@@ -1,0 +1,824 @@
+{
+  "card": "The Platinum Card from American Express",
+  "slug": "amex-platinum",
+  "issuer": "American Express",
+  "network": "Amex",
+  "annual_fee": 895,
+  "offered": true,
+  "product_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+  "checked_at": "2026-10-16",
+  "notes": "Post-2025 refresh terms from the US product page; Saks credit no longer listed (dropped 2026); Global Entry credit and Sky Club year do not fit the cadence enum.",
+  "entitlements": [
+    {
+      "id": "hotel-credit-fhr-thc",
+      "kind": "credit",
+      "name": "Hotel credit (FHR / Hotel Collection)",
+      "value": 600,
+      "unit": "USD",
+      "cadence": "semiannual",
+      "trigger": {
+        "merchants": [
+          "Fine Hotels + Resorts",
+          "The Hotel Collection"
+        ],
+        "categories": [
+          "hotel"
+        ],
+        "channel": "prepaid Fine Hotels + Resorts or The Hotel Collection via Amex Travel"
+      },
+      "requires": [
+        "book_via_channel",
+        "pay_with_card"
+      ],
+      "limits": "$300 per half-year (Jan-Jun, Jul-Dec); Hotel Collection needs a 2-night minimum stay; prepaid rates only.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "get up to $300 back in statement credits semi-annually for up to a total of $600 per year on prepaid Fine Hotels + Resorts ® or The Hotel Collection",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "uber-cash",
+      "kind": "credit",
+      "name": "Uber Cash",
+      "value": 200,
+      "unit": "USD",
+      "cadence": "monthly",
+      "trigger": {
+        "merchants": [
+          "Uber",
+          "Uber Eats"
+        ],
+        "categories": [
+          "rideshare",
+          "food_delivery"
+        ],
+        "channel": "Uber app with Platinum Card added"
+      },
+      "requires": [
+        "registration"
+      ],
+      "limits": "$15/mo Jan-Nov, $35 in Dec ($15 + $20 bonus); U.S. rides/orders only; paid as Uber Cash, not a statement credit; unused month does not roll over.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "start receiving $15 in Uber Cash each month, plus a bonus $20 in December, to use on rides and orders in the U.S.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "uber-one-credit",
+      "kind": "credit",
+      "name": "Uber One membership credit",
+      "value": 120,
+      "unit": "USD",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "Uber One"
+        ],
+        "categories": [
+          "membership"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Auto-renewing Uber One membership charged to the Card; up to $120 per calendar year.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "up to $120 in statement credits each calendar year after you purchase an auto-renewing Uber One membership with the Card",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "airline-fee-credit",
+      "kind": "credit",
+      "name": "Airline incidental fee credit",
+      "value": 200,
+      "unit": "USD",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "airline_fees"
+        ],
+        "channel": "one selected qualifying airline"
+      },
+      "requires": [
+        "selection",
+        "pay_with_card"
+      ],
+      "limits": "Must select one qualifying airline (selection, not classic enrollment); incidentals only (bags, seat/lounge day passes, in-flight items, change fees), not tickets; credit can take up to 8 weeks.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "Select one qualifying airline and then receive up to $200 in statement credits per calendar year when incidental fees, such as checked bags",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "clear-plus-credit",
+      "kind": "credit",
+      "name": "CLEAR+ credit",
+      "value": 219,
+      "unit": "USD",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "CLEAR"
+        ],
+        "categories": [
+          "membership"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Auto-renewing CLEAR+ membership; excludes taxes and fees.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "up to $219 in statement credits per calendar year after you sign up and pay for a CLEAR+ Membership (subject to auto-renewal)",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "global-entry-tsa-precheck-credit",
+      "kind": "credit",
+      "name": "Global Entry / TSA PreCheck fee credit",
+      "value": 120,
+      "unit": "USD",
+      "cadence": "every_n_years",
+      "trigger": {
+        "merchants": [
+          "Global Entry",
+          "TSA PreCheck"
+        ],
+        "categories": [
+          "trusted_traveler"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Recurs every 4 years for Global Entry ($120) or per 5-year TSA PreCheck application (up to $85 via official provider); value is per cycle, NOT annual. Cadence enum has no multi-year option.",
+      "source_url": "https://www.americanexpress.com/expeditedtravel",
+      "source_excerpt": "Receive either a statement credit every 4 years after you apply for Global Entry ($120) or a statement credit after you apply for a five-year membership for TSA PreCheck",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer",
+      "every_years": 4
+    },
+    {
+      "id": "resy-credit",
+      "kind": "credit",
+      "name": "Resy dining credit",
+      "value": 400,
+      "unit": "USD",
+      "cadence": "quarterly",
+      "trigger": {
+        "merchants": [
+          "Resy"
+        ],
+        "categories": [
+          "dining"
+        ],
+        "channel": "qualifying U.S. Resy restaurants"
+      },
+      "requires": [
+        "enrollment",
+        "pay_with_card"
+      ],
+      "limits": "$100 per calendar quarter; U.S. Resy restaurants only; unused quarter does not roll over.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "get up to $100 in statement credits each quarter after you use the Platinum Card ® to make eligible purchases with Resy",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "digital-entertainment-credit",
+      "kind": "credit",
+      "name": "Digital entertainment credit",
+      "value": 300,
+      "unit": "USD",
+      "cadence": "monthly",
+      "trigger": {
+        "merchants": [
+          "Disney+",
+          "Disney+ bundle",
+          "ESPN streaming",
+          "Hulu",
+          "The New York Times",
+          "Paramount+",
+          "Peacock",
+          "The Wall Street Journal",
+          "YouTube Premium",
+          "YouTube TV"
+        ],
+        "categories": [
+          "streaming",
+          "digital_news"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "enrollment",
+        "pay_with_card"
+      ],
+      "limits": "$25 per month; partner list subject to change.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "Get up to $25 in statement credits each month when you use your Platinum Card ® for eligible purchases",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "lululemon-credit",
+      "kind": "credit",
+      "name": "lululemon credit",
+      "value": 300,
+      "unit": "USD",
+      "cadence": "quarterly",
+      "trigger": {
+        "merchants": [
+          "lululemon"
+        ],
+        "categories": [
+          "apparel"
+        ],
+        "channel": "U.S. lululemon stores (not outlets) and lululemon.com"
+      },
+      "requires": [
+        "enrollment",
+        "pay_with_card"
+      ],
+      "limits": "$75 per calendar quarter; outlets excluded.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "up to $75 in statement credits each quarter when you use the Card for eligible purchases at U.S. lululemon retail stores (excluding outlets) and lululemon.com",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "walmart-plus-credit",
+      "kind": "credit",
+      "name": "Walmart+ membership credit",
+      "value": 155,
+      "unit": "USD",
+      "cadence": "monthly",
+      "trigger": {
+        "merchants": [
+          "Walmart+"
+        ],
+        "categories": [
+          "membership"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Up to $12.95 plus tax per month for one auto-renewing monthly Walmart+ membership (annual plan not covered).",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "Get up to a $12.95* statement credit back each month after you pay for a monthly Walmart+ membership (subject to auto-renewal)",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "oura-ring-credit",
+      "kind": "credit",
+      "name": "Oura Ring credit",
+      "value": 200,
+      "unit": "USD",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "Oura"
+        ],
+        "categories": [
+          "wearables"
+        ],
+        "channel": "ouraring.com"
+      },
+      "requires": [
+        "enrollment",
+        "pay_with_card"
+      ],
+      "limits": "Ring hardware purchased at ouraring.com; up to $200 per calendar year.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "up to $200 in statement credits when you use the Platinum Card ® to purchase an Oura Ring at ouraring.com each calendar year. Enrollment required.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "equinox-credit",
+      "kind": "credit",
+      "name": "Equinox credit",
+      "value": 300,
+      "unit": "USD",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "Equinox",
+          "Equinox+"
+        ],
+        "categories": [
+          "fitness"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "enrollment",
+        "pay_with_card"
+      ],
+      "limits": "Equinox club membership or Equinox+ digital subscription, auto-renewing.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "up to $300 in statement credits each calendar year after you pay with your Platinum Card ® for an Equinox club membership or Equinox+ digital subscription",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "venue-collection-concessions",
+      "kind": "credit",
+      "name": "Venue Collection concessions rebate",
+      "value": null,
+      "unit": "USD",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "stadium_concessions"
+        ],
+        "channel": "select American Express Venue Collection stadiums and arenas"
+      },
+      "requires": [
+        "enrollment",
+        "pay_with_card"
+      ],
+      "limits": "10% back on qualifying concessions, capped at $250 back per calendar year; one enrolled Card per Card Member. Not a fixed credit, so value is null.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "enroll your Card and get 10% back on qualifying concessions purchases up to $250 per calendar year. Limit one enrolled Card per Card Member.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "5x-flights",
+      "kind": "multiplier",
+      "name": "5X on flights",
+      "value": 5,
+      "unit": "points_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "airfare"
+        ],
+        "channel": "directly with airlines or via Amex Travel"
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Capped at $500,000 of these purchases per calendar year, then 1X.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "5X Points on Flights Booked directly with airlines or through American Express Travel ® , on up to $500,000 on these purchases per calendar year.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "5x-prepaid-hotels-amex-travel",
+      "kind": "multiplier",
+      "name": "5X on prepaid hotels via Amex Travel",
+      "value": 5,
+      "unit": "points_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "hotel"
+        ],
+        "channel": "prepaid hotels on Amex Travel"
+      },
+      "requires": [
+        "book_via_channel",
+        "pay_with_card"
+      ],
+      "limits": "Prepaid bookings only.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "5X Membership Rewards ® points on prepaid hotels booked on AmexTravel.com.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "1x-other",
+      "kind": "multiplier",
+      "name": "1X on everything else",
+      "value": 1,
+      "unit": "points_per_dollar",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "everything"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": null,
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "1X Membership Rewards ® points on all other Purchases.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "centurion-lounge",
+      "kind": "perk",
+      "name": "Centurion Lounge access",
+      "value": null,
+      "unit": "count",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Centurion Lounge"
+        ],
+        "categories": [
+          "airport lounge"
+        ],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Guest rules not captured here; check lounge terms.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "access to Centurion Lounges, 10 Delta Sky Club visits when flying on an eligible Delta flight, Priority Pass membership (enrollment required)",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "priority-pass",
+      "kind": "perk",
+      "name": "Priority Pass membership",
+      "value": null,
+      "unit": "count",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Priority Pass"
+        ],
+        "categories": [
+          "airport lounge"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "enrollment"
+      ],
+      "limits": "Guest policy and restaurant exclusions not captured.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "Priority Pass membership (enrollment required), and other select partner lounges.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "delta-sky-club-visits",
+      "kind": "perk",
+      "name": "Delta Sky Club visits",
+      "value": 10,
+      "unit": "count",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "Delta Sky Club"
+        ],
+        "categories": [
+          "airport lounge"
+        ],
+        "channel": "same-day eligible Delta flight"
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "10 visits per year (year starts Feb 1, i.e. Delta's Feb-Jan year, not calendar year); unlimited after $75,000 eligible spend in prior calendar year; extra visits $50 each.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "*Effective 2/1/25, Platinum Card Members will receive 10 Visits per year to the Delta Sky Club; to earn an unlimited number of Visits each year starting on 2/1/25",
+      "checked_at": "2026-10-16",
+      "confidence": "needs_verify",
+      "resets_on": "02-01"
+    },
+    {
+      "id": "marriott-gold",
+      "kind": "status",
+      "name": "Marriott Bonvoy Gold Elite",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Marriott Bonvoy"
+        ],
+        "categories": [
+          "hotel status"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "enrollment"
+      ],
+      "limits": "Enrollment through Amex is expected but not stated on the product page.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "With Marriott Bonvoy ® Gold Elite status, you can receive upgrades to enhanced rooms upon check-in when available.",
+      "checked_at": "2026-10-16",
+      "confidence": "needs_verify"
+    },
+    {
+      "id": "hilton-gold",
+      "kind": "status",
+      "name": "Hilton Honors Gold",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Hilton Honors"
+        ],
+        "categories": [
+          "hotel status"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "enrollment"
+      ],
+      "limits": null,
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "As a Platinum Card ® Member, you are eligible to enroll in complimentary Hilton Honors Gold status.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "leaders-club-sterling",
+      "kind": "status",
+      "name": "Leaders Club Sterling (Leading Hotels of the World)",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "The Leading Hotels of the World"
+        ],
+        "categories": [
+          "hotel status"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "enrollment"
+      ],
+      "limits": "Includes 5 pre-arrival upgrades per year (subject to availability).",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "you can receive complimentary Leaders Club Sterling Status from The Leading Hotels of the World ® . ... Enrollment required.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "car-rental-elite-status",
+      "kind": "status",
+      "name": "Car rental status (Avis, Hertz, National)",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Avis",
+          "Hertz",
+          "National"
+        ],
+        "categories": [
+          "car rental"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "enrollment"
+      ],
+      "limits": "Tier details only visible in the account.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "Card Members must enroll through their American Express online account using their eligible Card.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "fine-hotels-resorts",
+      "kind": "perk",
+      "name": "Fine Hotels + Resorts benefits",
+      "value": null,
+      "unit": null,
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "hotel"
+        ],
+        "channel": "Fine Hotels + Resorts via Amex Travel"
+      },
+      "requires": [
+        "book_via_channel"
+      ],
+      "limits": "Per stay: breakfast for two, upgrade when available, $100 property credit, 4pm checkout, noon check-in when available.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "Benefits include: Daily breakfast for two Room upgrade upon arrival when available ... $100 credit towards eligible charges",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "hotel-collection",
+      "kind": "perk",
+      "name": "The Hotel Collection benefits",
+      "value": null,
+      "unit": null,
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "hotel"
+        ],
+        "channel": "The Hotel Collection via Amex Travel, 2+ nights"
+      },
+      "requires": [
+        "book_via_channel"
+      ],
+      "limits": "$100 property credit per booking of 2+ nights.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "receive a $100 credit towards eligible charges* with every booking of two nights or more through AmexTravel.com.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "no-foreign-transaction-fees",
+      "kind": "perk",
+      "name": "No foreign transaction fees",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [],
+      "limits": null,
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "when you use your Platinum Card ® there are no foreign transaction fees.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "car-rental-loss-damage",
+      "kind": "insurance",
+      "name": "Car rental loss and damage insurance",
+      "value": null,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "car rental"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Secondary coverage, no liability; must decline the rental CDW; not in Australia, Italy, New Zealand. Coverage cap not stated on page.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "This product provides secondary coverage and does not include liability coverage.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "trip-delay",
+      "kind": "insurance",
+      "name": "Trip delay insurance",
+      "value": 500,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "travel"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Round trip paid entirely with the Card; delay over 6 hours; up to $500 per trip; max 2 claims per 12 months.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "a covered reason delays your trip more than 6 hours, Trip Delay Insurance ‡ can help reimburse certain additional expenses ... up to $500 per trip",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "trip-cancel-interrupt",
+      "kind": "insurance",
+      "name": "Trip cancellation and interruption insurance",
+      "value": 10000,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "travel"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Round trip paid entirely with the Card; up to $10,000 per trip, $20,000 per Card per 12 months.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "reimburse your non-refundable expenses purchased with the same Eligible Card, up to $10,000 per trip and up to $20,000 per Eligible Card per 12 consecutive month period.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "cell-phone-protection",
+      "kind": "protection",
+      "name": "Cell phone protection",
+      "value": 800,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "wireless bill"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Prior month's wireless bill paid with the Card; up to $800 per claim, 2 claims per 12 months, $50 deductible.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "maximum of up to $800 per claim with a limit of 2 approved claims per 12-month period",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "purchase-protection",
+      "kind": "protection",
+      "name": "Purchase protection",
+      "value": 10000,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Theft, accidental damage or loss within 90 days; up to $10,000 per item, $50,000 per calendar year.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "*Up to $10,000 per Covered Purchase, up to $50,000 per calendar year.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "return-protection",
+      "kind": "protection",
+      "name": "Return protection",
+      "value": 300,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Within 90 days if seller won't take it back; up to $300 per item, $1,000 per calendar year; U.S. purchases only.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "up to $300 per item, up to a maximum of $1,000 per calendar year per Card account",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "extended-warranty",
+      "kind": "protection",
+      "name": "Extended warranty",
+      "value": 10000,
+      "unit": "USD",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Adds up to 1 year to manufacturer warranties of 5 years or less; up to $10,000 per item, $50,000 per year.",
+      "source_url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+      "source_excerpt": "can provide up to one extra year added to the Original Manufacturer’s Warranty. Applies to warranties of 5 years or less.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    }
+  ]
+}

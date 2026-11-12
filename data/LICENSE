@@ -1,0 +1,9 @@
+The card entitlement data in this folder (data/entitlements/*.json) is licensed under the
+Creative Commons Attribution 4.0 International License (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
+
+You may share and adapt it, including commercially, as long as you give credit:
+"Card data from Tap (https://github.com/alecbolingbroke/tap-mcp), CC BY 4.0."
+
+Card terms change. Each entry carries its issuer source_url and checked_at date; verify before relying on it.
+Quoted source_excerpt text belongs to the respective card issuers.

@@ -1,0 +1,412 @@
+{
+  "card": "Atmos Rewards Ascent Visa Signature",
+  "slug": "atmos-rewards-ascent-visa-signature",
+  "issuer": "Bank of America",
+  "network": "Visa",
+  "annual_fee": 95,
+  "offered": true,
+  "product_url": "https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/",
+  "checked_at": "2026-10-16",
+  "notes": "Successor to the Alaska Airlines Visa Signature (Mileage Plan became Atmos Rewards, points not miles); sibling tiers are the Atmos Rewards Summit Visa Infinite and Atmos Rewards Visa Business; Alaska's terms page still carries the legacy 'Alaska Airlines Visa Signature' title, so legacy cards appear to run on these same terms.",
+  "entitlements": [
+    {
+      "id": "companion-fare",
+      "kind": "companion",
+      "name": "Annual $99 Companion Fare",
+      "value": null,
+      "unit": "count",
+      "cadence": "card_anniversary",
+      "trigger": {
+        "merchants": [
+          "Alaska Airlines",
+          "Hawaiian Airlines"
+        ],
+        "categories": [
+          "airfare"
+        ],
+        "channel": "book on alaskaair.com"
+      },
+      "requires": [
+        "minimum_spend",
+        "pay_with_card",
+        "book_via_channel"
+      ],
+      "limits": "Earned only after $6,000+ net purchases in the anniversary year; code arrives within 2 billing cycles of the anniversary. You pay $99 base fare plus taxes/fees from $23 (from $122). Coach only, round-trip or one-way, no multiple stopovers, Alaska/Hawaiian-operated flights within North America incl. Hawaii. Companion must be on a paid published coach fare booked together; both fares charged to the primary cardholder's card. Not valid with award travel or other discounts. Must be booked within 12 months of issue (travel may be later); no extensions.",
+      "source_url": "https://www.alaskaair.com/content/legal/terms-conditions/consumer-credit-card-benefits",
+      "source_excerpt": "The Companion Fare code must be redeemed within 12 months of the date of issue. Once ticketed, travel may be completed after the expiration date of the Companion Fare code.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "free-checked-bag",
+      "kind": "perk",
+      "name": "Free first checked bag (cardholder + 6 guests)",
+      "value": null,
+      "unit": "count",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Alaska Airlines"
+        ],
+        "categories": [
+          "airfare"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "1 free bag each for any cardholder and up to 6 guests on the same reservation; flights marketed by Alaska and operated by Alaska, Horizon or SkyWest only (no other-carrier codeshares). Primary cardholder must be an Atmos Rewards member. Not retroactive; active about 2-3 weeks after account opening. Issuer says up to $90 per person round trip.",
+      "source_url": "https://www.alaskaair.com/content/legal/terms-conditions/consumer-credit-card-benefits",
+      "source_excerpt": "Any cardholder who has an open account at the time of travel and up to 6 guests traveling on the same reservation may check 1 bag free of charge on qualifying reservations.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "preferred-boarding",
+      "kind": "perk",
+      "name": "Preferred boarding (cardholder + 6 guests)",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [
+          "Alaska Airlines"
+        ],
+        "categories": [
+          "airfare"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Airfare must be bought with the card and the primary cardholder's Atmos Rewards number must be on the reservation; Alaska-marketed flights operated by Alaska, Horizon or SkyWest; boards after status holders, premium cabins and pre-board groups.",
+      "source_url": "https://www.alaskaair.com/content/legal/terms-conditions/consumer-credit-card-benefits",
+      "source_excerpt": "Airfare must be purchased with your Atmos™ Rewards Visa® credit card to qualify for this benefit. To receive priority boarding, the primary cardholder's Atmos Rewards number must be included",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "earn-alaska-hawaiian-3x",
+      "kind": "multiplier",
+      "name": "3x on Alaska and Hawaiian Airlines purchases",
+      "value": 3,
+      "unit": "points_per_dollar",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [
+          "Alaska Airlines",
+          "Hawaiian Airlines"
+        ],
+        "categories": [
+          "airfare",
+          "inflight",
+          "lounge",
+          "vacation_packages",
+          "cargo"
+        ],
+        "channel": "buy direct from Alaska/Hawaiian"
+      },
+      "requires": [
+        "book_via_channel"
+      ],
+      "limits": "No cap. Purchases through third parties (travel agencies, online merchants) do not earn 3x.",
+      "source_url": "https://www.alaskaair.com/content/legal/terms-conditions/consumer-credit-card-benefits",
+      "source_excerpt": "Otherwise eligible Alaska Airlines Purchases made through a third-party merchant (e.g., travel agency, online merchant) will not earn 3 points per dollar.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "earn-everyday-2x",
+      "kind": "multiplier",
+      "name": "2x on gas, EV charging, cable/streaming, local transit",
+      "value": 2,
+      "unit": "points_per_dollar",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "gas",
+          "ev_charging",
+          "cable",
+          "streaming",
+          "local_transit",
+          "rideshare",
+          "tolls"
+        ],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "No cap. Based on merchant category code; the bank does not control how a merchant is coded.",
+      "source_url": "https://www.alaskaair.com/content/legal/terms-conditions/consumer-credit-card-benefits",
+      "source_excerpt": "Earn 2 points for every $1 of eligible Gas/Electric Vehicle (EV) Charging Station, Cable and Select Streaming Service and Local Transit (including Ride Share) Net Purchases.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "earn-base-1x",
+      "kind": "multiplier",
+      "name": "1x on everything else",
+      "value": 1,
+      "unit": "points_per_dollar",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "everything"
+        ],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Balance transfers, cash advances, fees and interest earn nothing. Points do not expire on active accounts.",
+      "source_url": "https://www.alaskaair.com/content/legal/terms-conditions/consumer-credit-card-benefits",
+      "source_excerpt": "Earn 1 point for every $1 of Net Purchases charged to the card each billing cycle.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "boa-relationship-bonus",
+      "kind": "perk",
+      "name": "10% points bonus with a Bank of America account",
+      "value": 10,
+      "unit": "pct",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Needs an open consumer Bank of America checking/savings or Merrill investment account meeting the balance/activity test; can take up to 60 days after opening that account to start.",
+      "source_url": "https://www.alaskaair.com/content/legal/terms-conditions/consumer-credit-card-benefits",
+      "source_excerpt": "If the primary cardholder or joint cardholder (excluding authorized users) has a Qualifying Account with us, a 10% bonus will be added to the points earned",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "status-points",
+      "kind": "status",
+      "name": "1 status point per $3 spent",
+      "value": 0.3333,
+      "unit": "points_per_dollar",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Atmos Rewards status points (count toward elite status, not redeemable points). Issuer FAQ says no cap on earning.",
+      "source_url": "https://www.alaskaair.com/content/credit-card",
+      "source_excerpt": "Cardholders earn one status point for every $3 spent on purchases, with no cap on earning.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "inflight-rebate",
+      "kind": "credit",
+      "name": "20% back on in-flight purchases",
+      "value": 20,
+      "unit": "pct",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [
+          "Alaska Airlines",
+          "Hawaiian Airlines"
+        ],
+        "categories": [
+          "inflight"
+        ],
+        "channel": "onboard"
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Paid as a statement credit within 7 days of posting; account must be open and in good standing. No stated cap.",
+      "source_url": "https://www.alaskaair.com/content/legal/terms-conditions/consumer-credit-card-benefits",
+      "source_excerpt": "Cardholders will receive a 20% rebate, in the form of a statement credit, for purchases of food, beverages, and Wi-Fi onboard Alaska and Alaska operated flights",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "lounge-plus-discount",
+      "kind": "perk",
+      "name": "$100 off Alaska Lounge+ membership",
+      "value": 100,
+      "unit": "USD",
+      "cadence": "calendar_year",
+      "trigger": {
+        "merchants": [
+          "Alaska Airlines"
+        ],
+        "categories": [
+          "lounge membership"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Applies to an annual Lounge+ membership bought with the card; not combinable with other Lounge+ discounts; memberships non-refundable. Value only counts if you buy a membership.",
+      "source_url": "https://www.alaskaair.com/content/legal/terms-conditions/consumer-credit-card-benefits",
+      "source_excerpt": "Cardholders will receive $100 off an annual Alaska Lounge+ Membership purchased with their Atmos™ Rewards Visa® credit card.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "welcome-offer",
+      "kind": "perk",
+      "name": "Welcome bonus: 50,000 points + $99 Companion Fare",
+      "value": 50000,
+      "unit": "count",
+      "cadence": "one_time",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": "online application"
+      },
+      "requires": [
+        "minimum_spend"
+      ],
+      "limits": "Spend $1,500+ in purchases within 90 days of opening. Online-only, limited-time; offer amounts change often (third-party sites show other versions).",
+      "source_url": "https://www.alaskaair.com/content/credit-card",
+      "source_excerpt": "*After spending $1,500 or more on purchases within the first 90 days after account opening. This online only offer may not be available elsewhere if you leave this page.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "atmos-dining",
+      "kind": "perk",
+      "name": "Atmos Rewards Dining (auto-enrolled)",
+      "value": 0.5,
+      "unit": "points_per_dollar",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [
+          "participating Atmos Rewards Dining restaurants"
+        ],
+        "categories": [
+          "dining"
+        ],
+        "channel": "atmosrewards.rewardsnetwork.com"
+      },
+      "requires": [
+        "enrollment"
+      ],
+      "limits": "Card is enrolled automatically; extra 1 point per $2 at participating restaurants only, on top of card earn. Run by Rewards Network.",
+      "source_url": "https://www.alaskaair.com/content/legal/terms-conditions/consumer-credit-card-benefits",
+      "source_excerpt": "Your card will be automatically enrolled in Atmos™ Rewards Dining... You'll earn 1 point for every $2 spent at participating restaurants.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "no-foreign-transaction-fee",
+      "kind": "perk",
+      "name": "No foreign transaction fee",
+      "value": 0,
+      "unit": "pct",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "foreign currency"
+        ],
+        "channel": null
+      },
+      "requires": [],
+      "limits": null,
+      "source_url": "https://www.alaskaair.com/content/legal/terms-conditions/consumer-credit-card-benefits",
+      "source_excerpt": "The Foreign Transaction Fee is 0% of the U.S. dollar amount of each transaction made in a foreign currency.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "zero-liability",
+      "kind": "protection",
+      "name": "$0 Liability Guarantee",
+      "value": null,
+      "unit": null,
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Covers fraudulent transactions; you must not have shared your personal or account information.",
+      "source_url": "https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/",
+      "source_excerpt": "$0 Liability Guarantee",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "auto-rental-cdw",
+      "kind": "insurance",
+      "name": "Auto rental collision damage waiver",
+      "value": null,
+      "unit": null,
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "car rental"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Visa Signature benefit; primary vs secondary and exclusions not confirmed. Check the cardholder Guide to Benefits (in online banking under Statements & Documents).",
+      "source_url": "https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/",
+      "source_excerpt": "Not listed on issuer product page; reported by third-party reviews.",
+      "checked_at": "2026-10-16",
+      "confidence": "needs_verify"
+    },
+    {
+      "id": "lost-luggage",
+      "kind": "insurance",
+      "name": "Lost luggage reimbursement",
+      "value": null,
+      "unit": null,
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "airfare",
+          "common carrier"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Limits and conditions not confirmed; check the cardholder Guide to Benefits.",
+      "source_url": "https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/",
+      "source_excerpt": "Not listed on issuer product page; reported by third-party reviews.",
+      "checked_at": "2026-10-16",
+      "confidence": "needs_verify"
+    },
+    {
+      "id": "purchase-protection-extended-warranty",
+      "kind": "protection",
+      "name": "Purchase protection and extended warranty",
+      "value": null,
+      "unit": null,
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [
+        "pay_with_card"
+      ],
+      "limits": "Only one third-party source lists these for this card; terms unknown. Check the cardholder Guide to Benefits.",
+      "source_url": "https://www.bankofamerica.com/credit-cards/products/alaska-airlines-credit-card/",
+      "source_excerpt": "Not listed on issuer product page; reported by one third-party review.",
+      "checked_at": "2026-10-16",
+      "confidence": "needs_verify"
+    }
+  ]
+}

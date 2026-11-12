@@ -1,0 +1,223 @@
+{
+  "card": "Discover it Cash Back",
+  "slug": "discover-it-cash-back",
+  "issuer": "Capital One, N.A. (Discover, a division of Capital One)",
+  "network": "Discover",
+  "annual_fee": 0,
+  "offered": true,
+  "product_url": "https://www.discover.com/credit-cards/cash-back/it-card.html",
+  "checked_at": "2026-10-16",
+  "notes": "Still sold under the Discover it Cash Back name; the product page is now a Capital One page (Discover Bank merged into Capital One, N.A.). The rewards terms PDF still names Discover Bank (2023).",
+  "entitlements": [
+    {
+      "id": "rotating-5pct",
+      "kind": "multiplier",
+      "name": "5% rotating quarterly categories",
+      "value": 5,
+      "unit": "pct",
+      "cadence": "quarterly",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "rotating"
+        ],
+        "channel": null
+      },
+      "requires": [
+        "activation"
+      ],
+      "limits": "Activate each quarter (online, app, email or phone). Up to $1,500 in category purchases per quarter ($75 max bonus); earns from the later of quarter start or activation date. Category set by merchant MCC. Credited within 2 billing periods.",
+      "source_url": "https://www.discover.com/credit-cards/cash-back/cashback-calendar.html",
+      "source_excerpt": "Earn 5% Cashback Bonus on up to $1,500 in different category purchases each quarter, when you activate.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "base-1pct",
+      "kind": "multiplier",
+      "name": "1% on all other purchases",
+      "value": 1,
+      "unit": "pct",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "everything"
+        ],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Unlimited. No rewards on cash advances, balance transfers, deposit-account transfers or Cash at Checkout. Some digital-wallet or third-party payment purchases may not earn if transaction detail is insufficient.",
+      "source_url": "https://www.discover.com/content/dam/discover/en_us/credit-cards/card-acquisitions/grey-redesign/global/pdf/Ts_Cs_DIscover_It_Ts_Cs_small.pdf",
+      "source_excerpt": "You will earn unlimited 1% Cashback Bonus on all purchases other than Program Purchases.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "cashback-match",
+      "kind": "multiplier",
+      "name": "First-year Cashback Match",
+      "value": null,
+      "unit": "pct",
+      "cadence": "one_time",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "everything"
+        ],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "New cardholders only. Doubles all cash back earned from approval through day 365, no cap, automatic; added within two billing periods after year one. Excludes rewards processed after the period, statement credits, deposit-account transfers, closed accounts. Promo may end.",
+      "source_url": "https://www.discover.com/credit-cards/cash-back/it-card.html",
+      "source_excerpt": "We'll match all the cash back you've earned on your credit card from the day your new account is approved through your first 365 days",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "intro-apr-0-15mo",
+      "kind": "perk",
+      "name": "0% intro APR, 15 months",
+      "value": null,
+      "unit": "count",
+      "cadence": "one_time",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "purchases",
+          "balance transfers"
+        ],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "15 months on purchases and balance transfers, then 17.74% to 26.74% variable. Balance transfer fee applies. Eligible new customers.",
+      "source_url": "https://www.discover.com/credit-cards/cash-back/it-card.html",
+      "source_excerpt": "0% intro APR for 15 months on purchases and balance transfers; 17.74% to 26.74% variable APR after that; Balance Transfer Fee applies",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "zero-fraud-liability",
+      "kind": "protection",
+      "name": "$0 fraud liability",
+      "value": null,
+      "unit": "USD",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Covers unauthorized purchases; claims subject to investigation and verification. Not covered if you gave card access to someone.",
+      "source_url": "https://www.discover.com/credit-cards/cash-back/it-card.html",
+      "source_excerpt": "Unauthorized use and $0 fraud liability claims are subject to investigation and verification.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "card-lock",
+      "kind": "protection",
+      "name": "Card lock in app",
+      "value": null,
+      "unit": "count",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": "mobile app or website"
+      },
+      "requires": [],
+      "limits": "Some transactions still go through while locked (e.g. recurring adjustments, fees, system-downtime purchases). Usually primary cardholder only.",
+      "source_url": "https://www.discover.com/credit-cards/cash-back/it-card.html",
+      "source_excerpt": "Typically, only primary cardholders or account managers can lock and unlock a card.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "creditwise-dark-web-alerts",
+      "kind": "perk",
+      "name": "CreditWise monitoring, FICO Score 8, dark web alerts",
+      "value": null,
+      "unit": "count",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": "CreditWise (Capital One)"
+      },
+      "requires": [
+        "enrollment"
+      ],
+      "limits": "Free; must sign up for CreditWise. FICO Score 8 from TransUnion data; alerts on select TransUnion and Experian changes and dark web findings.",
+      "source_url": "https://www.discover.com/credit-cards/cash-back/it-card.html",
+      "source_excerpt": "The credit score provided in CreditWise is a FICO Score 8 based on TransUnion data.",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "virtual-card-number",
+      "kind": "perk",
+      "name": "Virtual card number",
+      "value": null,
+      "unit": "count",
+      "cadence": "ongoing",
+      "trigger": {
+        "merchants": [],
+        "categories": [],
+        "channel": "website or mobile app"
+      },
+      "requires": [],
+      "limits": "Not all customers eligible; identity check required; may not be available until about 30 days after opening.",
+      "source_url": "https://www.discover.com/credit-cards/cash-back/it-card.html",
+      "source_excerpt": "Some customers will not be eligible to access a virtual card. If you are eligible, you must verify your identity",
+      "checked_at": "2026-10-16",
+      "confidence": "issuer"
+    },
+    {
+      "id": "no-foreign-transaction-fee",
+      "kind": "perk",
+      "name": "No foreign transaction fee",
+      "value": null,
+      "unit": "pct",
+      "cadence": "per_purchase",
+      "trigger": {
+        "merchants": [],
+        "categories": [
+          "foreign purchases"
+        ],
+        "channel": null
+      },
+      "requires": [],
+      "limits": "Discover network acceptance abroad is narrower than Visa/Mastercard. Not confirmed on a live issuer page this check; the issuer FX-fee article now redirects to unrelated content.",
+      "source_url": "https://www.discover.com/credit-cards/card-smarts/discover-card-foreign-transaction-fees/",
+      "source_excerpt": "",
+      "checked_at": "2026-10-16",
+      "confidence": "needs_verify"
+    }
+  ],
+  "rotating": [
+    {
+      "quarter": "2026-Q4",
+      "categories": [
+        "dining",
+        "entertainment",
+        "utilities"
+      ],
+      "rate": 5,
+      "cap_usd": 1500,
+      "activation_deadline": null,
+      "source_url": "https://www.discover.com/credit-cards/exclusives/5percent-q3-paypal.html",
+      "confidence": "needs_verify"
+    },
+    {
+      "quarter": "2027-Q1",
+      "categories": [],
+      "rate": 5,
+      "cap_usd": 1500,
+      "activation_deadline": null,
+      "source_url": "https://www.discover.com/credit-cards/cash-back/cashback-calendar.html",
+      "confidence": "needs_verify"
+    }
+  ]
+}

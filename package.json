@@ -1,0 +1,42 @@
+{
+  "name": "tap-mcp",
+  "version": "0.1.0",
+  "description": "The step before an AI agent pays: which card, which credit applies, what's already used, what's about to expire. An MCP server.",
+  "license": "(MIT AND CC-BY-4.0)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alecbolingbroke/tap-mcp.git"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "credit-cards",
+    "rewards",
+    "agentic-commerce",
+    "ai-agents"
+  ],
+  "type": "module",
+  "bin": {
+    "tap-mcp": "dist/server.js"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node src/server.ts",
+    "test": "node test/optimize.test.ts && node test/expiring.test.ts && node test/state.test.ts && node test/check-data.ts",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "typescript": "^5.9.3"
+  }
+}
