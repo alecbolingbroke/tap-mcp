@@ -36,7 +36,7 @@ const tools = [
       type: "object",
       properties: {
         merchant: { type: "string", description: "Merchant or brand being paid, e.g. 'Delta Stays', 'Uber', 'lululemon'." },
-        category: { type: "string", enum: purchaseCategories, description: "What is being bought." },
+        category: { type: "string", enum: purchaseCategories, description: "What is being bought. Use general when nothing more specific fits (most online shopping, e.g. household items on Amazon)." },
         amount: { type: "number", exclusiveMinimum: 0, description: "Purchase total in USD." },
         date: { type: "string", description: "ISO date of the purchase; defaults to today." },
         booked_via: { type: "string", enum: ["direct", "issuer_portal"], description: "issuer_portal = booked through the card issuer's travel site." },
@@ -183,7 +183,7 @@ async function call(name: string, a: Record<string, unknown>) {
   if (name === "list_cards") {
     const state = loadState(statePath);
     return text({
-      cards: cards.map((c) => ({ slug: c.slug, card: c.card, annual_fee: c.annual_fee, held: (state.held ?? []).includes(c.slug) })),
+      cards: cards.map((c) => ({ slug: c.slug, card: c.card, ...(c.aka && { also_called: c.aka }), annual_fee: c.annual_fee, held: (state.held ?? []).includes(c.slug) })),
       memberships: memberships.map((m) => ({ slug: m.slug, membership: m.membership, annual_fee: m.annual_fee, held: (state.memberships ?? []).includes(m.slug) })),
     });
   }
@@ -250,10 +250,20 @@ async function call(name: string, a: Record<string, unknown>) {
   const earn = await cardSavvyEarn(purchase, held);
   const answer = optimizePurchase(purchase, cards, held, { state, earn: earn ?? undefined, taxRules });
   if (!earn) answer.assumptions.unshift("CardSavvy wasn't used (no answer, or the purchase is in another quarter), so earn rates are Tap's own.");
-  return text({ ...answer, expiring_soon: expiring(state, cards, held, today, 14).due, ask_user: askUser(state, cards, today, answer) });
+  // Only what changes this purchase is asked before paying; setup questions wait until the order is placed.
+  const setup = askUser(state, cards, today);
+  const now = askUser(state, cards, today, answer).filter((q) => !setup.includes(q));
+  return text({ ...answer, expiring_soon: expiring(state, cards, held, today, 14).due, ask_user: now, ask_after_purchase: setup });
 }
 
-const server = new Server({ name: "tap", version: "0.2.0" }, { capabilities: { tools: {} } });
+// Shown to the agent at every session start, even when the tools themselves are loaded lazily: this is what makes it call Tap unprompted.
+const instructions =
+  "Tap knows which credit cards and benefits the user has, and which one to pay with. Whenever you are about to pay for something for the user " +
+  "(a browser checkout, a booking, an API order, any merchant), call optimize_purchase once the merchant and total are known and before you place the order. " +
+  "Don't ask whether to check; check, then tell the user which card to use and why in one line, and switch the card at checkout if it isn't already selected. " +
+  "Ask the ask_user questions before paying (they change this purchase); ask the ask_after_purchase questions once the order is done. " +
+  "If Tap has no cards saved, ask the user which cards they carry; if a checkout page lists their cards, you may suggest those names, but confirm with the user before saving.";
+const server = new Server({ name: "tap", version: "0.3.0" }, { capabilities: { tools: {} }, instructions });
 server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools }));
 server.setRequestHandler(CallToolRequestSchema, async (req) => {
   try {

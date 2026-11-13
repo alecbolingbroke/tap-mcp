@@ -76,4 +76,14 @@ assert.deepEqual(Object.keys(earn), ["atmos-rewards-ascent-visa-signature"]);
 assert.ok(earn["atmos-rewards-ascent-visa-signature"].warnings[0].startsWith("Scored as Flights"));
 assert.deepEqual(parseEarn({ error: "x" }, HELD), {});
 
-console.log("optimize_purchase: 11 scenarios pass");
+// Household items on Amazon ("general"): base rates only, the best card wins even by cents, and a warning every card shares is said once.
+const amazonNote = "Amazon codes as online retail, not grocery, even for grocery items in your cart.";
+const flat = (usd: number) => ({ usd, note: "base", warnings: [amazonNote] });
+a = optimizePurchase({ merchant: "Amazon", category: "general", amount: 32.71 }, cards, HELD, { earn: { "discover-it-cash-back": flat(0.41), "delta-skymiles-gold-amex": flat(0.39), "atmos-rewards-ascent-visa-signature": flat(0.47) } });
+assert.equal(a.best?.slug, "atmos-rewards-ascent-visa-signature");
+assert.ok(a.options.every((o) => !o.warnings.includes(amazonNote)) && a.tips.filter((t) => t === amazonNote).length === 1);
+assert.equal(optimizePurchase({ merchant: "Amazon", category: "general", amount: 30 }, cards, HELD).benefits.length, 0);
+// CardSavvy's "not as General" note is dropped; a real miscoding note is kept.
+assert.deepEqual(parseEarn({ result: { ranked: [{ card_name: "Delta SkyMiles Gold", value: 0.39, assumptions: ["Scored as Amazon because of how Amazon codes, not as General."] }] } }, HELD)["delta-skymiles-gold-amex"].warnings, []);
+
+console.log("optimize_purchase: 14 scenarios pass");

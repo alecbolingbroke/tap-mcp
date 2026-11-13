@@ -33,7 +33,12 @@ Needs Node 20+.
 
 ## Setup happens in conversation
 
-There's no form. Every answer includes `ask_user`: the next question the agent should ask, one at a time.
+There's no form. Every answer includes `ask_user`: the next question the agent should ask, one at a time. At checkout,
+`optimize_purchase` splits them: `ask_user` holds only what changes this purchase (is the credit still unused?), and
+`ask_after_purchase` holds setup questions, so checkout isn't held up.
+
+Tap also sends the agent standing instructions when it connects: check with Tap before paying for anything, without asking
+first. That's what makes an agent call it unprompted, even when its tools are loaded lazily.
 
 1. "Which cards do you carry?" → `set_my_cards`
 2. A renewal date, only for cards whose credits reset on it → `set_my_cards` with `anniversaries`
@@ -47,9 +52,9 @@ There's no form. Every answer includes `ask_user`: the next question the agent s
 
 | Tool | What it does |
 |---|---|
-| `optimize_purchase` | Best card for a purchase: earn + unused credit, conditions, payment-rail risk, matching `benefits`, `expiring_soon`, `ask_user` |
+| `optimize_purchase` | Best card for a purchase: earn + unused credit, conditions, payment-rail risk, matching `benefits`, `expiring_soon`, `ask_user`, `ask_after_purchase`. Category `general` covers most online shopping |
 | `whats_expiring` | Balances, unused credits and benefit allowances or deadlines lapsing in a window, soonest first |
-| `list_cards` | Cards and memberships Tap knows, and which ones you hold |
+| `list_cards` | Cards and memberships Tap knows (with older names, e.g. Alaska Airlines Visa for Atmos Ascent), and which ones you hold |
 | `set_my_cards` · `mark_credit` · `set_benefits` · `mark_benefit` · `set_balance` | Save what you tell your agent |
 
 ## Privacy

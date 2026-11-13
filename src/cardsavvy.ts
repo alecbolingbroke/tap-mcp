@@ -35,7 +35,7 @@ export function parseEarn(reply: unknown, held: string[]): Record<string, Earn> 
       usd: Math.round(r.value * 100) / 100,
       note: `${typeof r.formula === "string" ? r.formula : "rate"} (CardSavvy, ${typeof r.confidence === "string" ? r.confidence : "unknown"} confidence)`,
       // "Scored as Flights because…" is where CardSavvy's merchant coding can disagree with the agent's category: surface it.
-      warnings: [...strings(r.warnings), ...strings(r.assumptions).filter((a) => a.startsWith("Scored as"))],
+      warnings: [...strings(r.warnings), ...strings(r.assumptions).filter((a) => a.startsWith("Scored as") && !a.endsWith("not as General."))],
     };
   }
   return out;

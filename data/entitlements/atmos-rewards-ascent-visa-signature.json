@@ -1,5 +1,9 @@
 {
   "card": "Atmos Rewards Ascent Visa Signature",
+  "aka": [
+    "Alaska Airlines Visa Signature",
+    "Alaska Airlines Visa"
+  ],
   "slug": "atmos-rewards-ascent-visa-signature",
   "issuer": "Bank of America",
   "network": "Visa",

@@ -7,8 +7,8 @@ export const CADENCES = ["monthly", "quarterly", "semiannual", "calendar_year", 
 /** How many times a year a sub-yearly cadence repeats; credit values are stored per year. */
 export const PERIODS: Partial<Record<(typeof CADENCES)[number], number>> = { monthly: 12, quarterly: 4, semiannual: 2 };
 // Purchase categories for earn rates and credits (what optimize_purchase matches on). "everything" = the card's base rate;
-// "rotating" = look up the card's `rotating` calendar for the quarter.
-export const CATEGORIES = ["dining", "food_delivery", "grocery", "gas", "ev_charging", "airfare", "airline_fees", "hotel", "vacation_rental", "vacation_packages", "travel", "rideshare", "local_transit", "tolls", "streaming", "digital_news", "cable", "utilities", "entertainment", "fitness", "membership", "apparel", "wearables", "trusted_traveler", "stadium_concessions", "inflight", "lounge", "cargo", "pharmacy", "medical", "dental", "vision", "childcare", "education", "phone", "everything", "rotating"] as const;
+// "general" = nothing more specific fits (only base rates apply); "rotating" = look up the card's `rotating` calendar for the quarter.
+export const CATEGORIES = ["dining", "food_delivery", "grocery", "gas", "ev_charging", "airfare", "airline_fees", "hotel", "vacation_rental", "vacation_packages", "travel", "rideshare", "local_transit", "tolls", "streaming", "digital_news", "cable", "utilities", "entertainment", "fitness", "membership", "apparel", "wearables", "trusted_traveler", "stadium_concessions", "inflight", "lounge", "cargo", "pharmacy", "medical", "dental", "vision", "childcare", "education", "phone", "general", "everything", "rotating"] as const;
 export type Category = (typeof CATEGORIES)[number];
 export const REQUIRES = ["activation", "enrollment", "registration", "minimum_spend", "pay_with_card", "book_via_channel", "selection"] as const;
 
@@ -40,6 +40,8 @@ export type CardFile = {
   annual_fee: number;
   product_url: string;
   checked_at: string;
+  /** Names the card is still shown under (wallets, checkout pages), e.g. before a rebrand. */
+  aka?: string[];
   notes?: string;
   entitlements: Entitlement[];
   rotating?: { quarter: string; categories: Category[]; rate: number; cap_usd: number; activation_deadline: string | null; source_url: string; confidence: "issuer" | "needs_verify" }[];

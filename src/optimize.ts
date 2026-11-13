@@ -167,6 +167,10 @@ export function optimizePurchase(
   });
 
   options.sort((a, b) => b.total_usd - a.total_usd);
+  // A warning every card carries is about the purchase, not the card: say it once.
+  const shared = options.length > 1 ? options[0].warnings.filter((w) => options.every((o) => o.warnings.includes(w))) : [];
+  for (const o of options) o.warnings = o.warnings.filter((w) => !shared.includes(w));
+  tips.push(...shared);
 
   const benefits: BenefitHit[] = [];
   let unchecked = false; // a benefit with neither a document nor IRS rules behind it
