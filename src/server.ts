@@ -259,11 +259,11 @@ async function call(name: string, a: Record<string, unknown>) {
 // Shown to the agent at every session start, even when the tools themselves are loaded lazily: this is what makes it call Tap unprompted.
 const instructions =
   "Tap knows which credit cards and benefits the user has, and which one to pay with. Whenever you are about to pay for something for the user " +
-  "(a browser checkout, a booking, an API order, any merchant), call optimize_purchase once the merchant and total are known and before you place the order. " +
+  "(a browser checkout, a booking, an API order, any merchant), call optimize_purchase as soon as the merchant and total are known, before you show the user an order summary or ask them to confirm payment. " +
   "Don't ask whether to check; check, then tell the user which card to use and why in one line, and switch the card at checkout if it isn't already selected. " +
   "Ask the ask_user questions before paying (they change this purchase); ask the ask_after_purchase questions once the order is done. " +
   "If Tap has no cards saved, ask the user which cards they carry; if a checkout page lists their cards, you may suggest those names, but confirm with the user before saving.";
-const server = new Server({ name: "tap", version: "0.3.0" }, { capabilities: { tools: {} }, instructions });
+const server = new Server({ name: "tap", version: "0.3.1" }, { capabilities: { tools: {} }, instructions });
 server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools }));
 server.setRequestHandler(CallToolRequestSchema, async (req) => {
   try {

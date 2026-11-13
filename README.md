@@ -17,7 +17,13 @@ Card-picker tools already exist (CardSavvy, PointMaxx and others) and they're go
 
 ## Install
 
-Claude Code:
+Claude Code (recommended: the plugin adds the server and a `tap` skill, so your agent checks Tap before every purchase without being asked):
+
+```
+/plugin install tap --marketplace alecbolingbroke/tap-mcp
+```
+
+Claude Code, server only:
 
 ```sh
 claude mcp add tap -- npx -y tap-mcp
@@ -37,8 +43,9 @@ There's no form. Every answer includes `ask_user`: the next question the agent s
 `optimize_purchase` splits them: `ask_user` holds only what changes this purchase (is the credit still unused?), and
 `ask_after_purchase` holds setup questions, so checkout isn't held up.
 
-Tap also sends the agent standing instructions when it connects: check with Tap before paying for anything, without asking
-first. That's what makes an agent call it unprompted, even when its tools are loaded lazily.
+The agent should check with Tap before paying for anything, without being asked. Tap's server sends that as standing
+instructions, but a server that starts slowly can miss them. The plugin's `tap` skill (`skills/tap/SKILL.md`) is what
+reliably makes Claude Code call Tap on its own.
 
 1. "Which cards do you carry?" → `set_my_cards`
 2. A renewal date, only for cards whose credits reset on it → `set_my_cards` with `anniversaries`

@@ -1,0 +1,11 @@
+{
+  "name": "tap",
+  "version": "0.3.1",
+  "description": "The step before your agent pays: which of your cards or benefits to use, which credit applies, what's already used and what's about to expire.",
+  "author": { "name": "Alec Bolingbroke", "url": "https://github.com/alecbolingbroke" },
+  "homepage": "https://tap.alecbolingbroke.com/agents",
+  "repository": "https://github.com/alecbolingbroke/tap-mcp",
+  "license": "MIT",
+  "keywords": ["payments", "credit-cards", "rewards", "shopping", "checkout"],
+  "mcpServers": "./.mcp.json"
+}
