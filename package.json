@@ -1,6 +1,6 @@
 {
   "name": "tap-mcp",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "The step before an AI agent pays: which card, which credit applies, what's already used, what's about to expire. An MCP server.",
   "license": "(MIT AND CC-BY-4.0)",
   "repository": {
@@ -17,7 +17,8 @@
   ],
   "type": "module",
   "bin": {
-    "tap-mcp": "dist/server.js"
+    "tap-mcp": "dist/server.js",
+    "tap-mcp-http": "dist/host.js"
   },
   "files": [
     "dist",
@@ -29,7 +30,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node src/server.ts",
-    "test": "node test/optimize.test.ts && node test/expiring.test.ts && node test/state.test.ts && node test/benefits.test.ts && node test/check-data.ts",
+    "test": "node test/optimize.test.ts && node test/expiring.test.ts && node test/state.test.ts && node test/benefits.test.ts && node test/http.test.ts && node test/check-data.ts",
     "prepublishOnly": "npm run build && npm test"
   },
   "dependencies": {

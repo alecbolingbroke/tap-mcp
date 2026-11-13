@@ -1,5 +1,5 @@
 {
   "mcpServers": {
-    "tap": { "command": "npx", "args": ["-y", "tap-mcp@^0.3.1"] }
+    "tap": { "command": "npx", "args": ["-y", "tap-mcp@^0.4.0"] }
   }
 }

@@ -8,10 +8,15 @@ import type { Answer } from "./optimize.ts";
 
 export const loadState = (path: string): State => (existsSync(path) ? checkState(JSON.parse(readFileSync(path, "utf8"))) : {});
 
+export const MAX_STATE_BYTES = 256_000;
+
 /** Write-then-rename, so a crash mid-write never leaves a half-written file. */
 export function saveState(path: string, state: State) {
+  const json = JSON.stringify(checkState(state), null, 2) + "\n";
+  // A real wallet is a few KB; the cap stops one hosted user filling the disk through endless set_benefits calls.
+  if (json.length > MAX_STATE_BYTES) throw new Error("Tap's saved data is too large. Remove benefits or balances you no longer need.");
   mkdirSync(dirname(path), { recursive: true });
-  writeFileSync(`${path}.tmp`, JSON.stringify(checkState(state), null, 2) + "\n", { mode: 0o600 });
+  writeFileSync(`${path}.tmp`, json, { mode: 0o600 });
   renameSync(`${path}.tmp`, path);
 }
 

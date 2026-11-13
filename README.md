@@ -63,6 +63,13 @@ reliably makes Claude Code call Tap on its own.
 | `whats_expiring` | Balances, unused credits and benefit allowances or deadlines lapsing in a window, soonest first |
 | `list_cards` | Cards and memberships Tap knows (with older names, e.g. Alaska Airlines Visa for Atmos Ascent), and which ones you hold |
 | `set_my_cards` · `mark_credit` · `set_benefits` · `mark_benefit` · `set_balance` | Save what you tell your agent |
+| `delete_my_data` | Delete everything Tap saved for you (after you confirm) |
+
+## Hosted
+
+`tap-mcp-http` serves the same tools over HTTPS for AI apps that can't start a local server (ChatGPT, Claude on the web).
+People sign in with Google, but Tap asks only for an anonymous account id, never a name or email, and keeps each person's
+data in their own file. To run your own, see [host/README.md](host/README.md).
 
 ## Privacy
 
